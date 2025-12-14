@@ -12,6 +12,13 @@ This project adheres to the Conventional Commits specification for git commit me
 [optional footer(s)]
 ```
 
+### Prompt:
+```
+From the changes, generate a Git commit message following the format in docs/git_commit_format.md.
+Separate git add commands if needed for selective staging.
+Ensure the commit message is clean, concise, and follows the workflow guidelines.
+```
+
 ### Commit Message Structure:
 
 *   **`<type>`:** Describes the kind of change that this commit is providing.
