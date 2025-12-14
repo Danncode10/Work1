@@ -16,7 +16,7 @@
 ---
 
 1. **Optional User Authentication**
-    - **Trigger:** User clicks “Sign In” or “Create Account” from the profile section
+    - **Trigger:** User clicks "Sign In" or "Create Account" from the profile section
     - **Output:** Authenticated user session
     
     > The system shall provide optional user registration and login through a profile section.
@@ -105,7 +105,7 @@
 ### **Usability**
 
 - No login required for basic usage
-- Clear “Sign In / Create Account” access in the profile section
+- Clear "Sign In / Create Account" access in the profile section
 - Minimal interruptions during browsing
 - Responsive design across devices
 
@@ -172,7 +172,7 @@
 
 ### **Suggested Answer Guide**
 
-> “The system will use JavaScript and Python, with React for the frontend and FastAPI for the backend. A relational database (PostgreSQL) will be used to store structured ingredient and user data. RESTful APIs will handle communication between frontend and backend, with support for future integrations.”
+> "The system will use JavaScript and Python, with React for the frontend and FastAPI for the backend. A relational database (PostgreSQL) will be used to store structured ingredient and user data. RESTful APIs will handle communication between frontend and backend, with support for future integrations."
 > 
 
 ---
@@ -256,13 +256,13 @@
 
 ### **Example Acceptance Statements**
 
-> “Ingredient search is successful when a guest user receives relevant results within 2 seconds.”
+> "Ingredient search is successful when a guest user receives relevant results within 2 seconds."
 > 
 
-> “An ingredient detail page is valid when nutrition facts and benefits load without errors.”
+> "An ingredient detail page is valid when nutrition facts and benefits load without errors."
 > 
 
-> “Version 1 is accepted when users can browse ingredient data without being required to log in.”
+> "Version 1 is accepted when users can browse ingredient data without being required to log in."
 > 
 
 ---
@@ -328,7 +328,70 @@
 
 ### **Suggested Answer Guide**
 
-> “Authentication will use AWS Cognito, access is controlled with IAM roles, sensitive data is encrypted in transit and at rest, secrets are stored in AWS Secrets Manager, and backups are managed via RDS automated backups and EBS snapshots.”
+> "Authentication will use AWS Cognito, access is controlled with IAM roles, sensitive data is encrypted in transit and at rest, secrets are stored in AWS Secrets Manager, and backups are managed via RDS automated backups and EBS snapshots."
 > 
 
+## **2.8 Environment Variables (.env) Questionnaire**
+
+* **Required variables:**
+
+  * `DATABASE_URL` — PostgreSQL connection string (AWS RDS)
+  * `AWS_REGION`
+  * `AWS_ACCESS_KEY_ID`
+  * `AWS_SECRET_ACCESS_KEY`
+  * `AWS_COGNITO_USER_POOL_ID`
+  * `AWS_COGNITO_CLIENT_ID`
+  * `NODE_ENV` — environment mode (development, production)
+  * `PORT` — backend server port
+  * `REACT_APP_API_BASE_URL` — frontend API base URL
+
+* **Sensitive variables:**
+
+  * `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
+
+  * Database credentials inside `DATABASE_URL`
+
+  * Any future API keys or tokens
+
+  > These will be stored in **AWS Secrets Manager** for production environments.
+
+* **Management across environments:**
+
+  * Use separate `.env` files for development, staging, and production
+  * Production secrets managed in **AWS Secrets Manager**, not in local `.env`
+
+* **Sharing templates:**
+
+  * Provide a `.env.example` file with placeholder values
+  * Document the setup process in README for local development and production deployment
+
 ---
+
+### **Suggested Answer Guide**
+
+> “Required variables include database connection, AWS credentials, Cognito IDs, environment mode, backend port, and frontend API URL. Sensitive variables are stored securely in AWS Secrets Manager. `.env.example` is used for templates, and setup instructions are documented in the README.”
+
+`.env file`
+```
+# Backend Database
+DATABASE_URL=postgresql://username:password@hostname:5432/dbname
+
+# AWS Configuration
+AWS_REGION=your-aws-region
+AWS_ACCESS_KEY_ID=your-access-key-id
+AWS_SECRET_ACCESS_KEY=your-secret-access-key
+
+# AWS Cognito
+AWS_COGNITO_USER_POOL_ID=your-cognito-user-pool-id
+AWS_COGNITO_CLIENT_ID=your-cognito-client-id
+
+# Node / FastAPI Backend
+NODE_ENV=development
+PORT=8000
+
+# Frontend
+REACT_APP_API_BASE_URL=http://localhost:8000/api
+
+```
+
+
