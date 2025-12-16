@@ -19,11 +19,11 @@ Version 1.0.0 does NOT include:
 
 ### **Stage 1: Initial Setup & Environment Configuration**
 1.1 Sub Stage: **Set up Local Development Environment**
-- Install Python (3.9+) and Node.js (LTS version).
-- Install Python package manager (Poetry recommended) and Node.js package manager (npm/yarn).
+- Install Python (3.9+).
+- Install Python package manager (Poetry recommended).
 - Configure Git and clone the project repository.
 - Create a virtual environment for Python and install backend dependencies.
-- Install frontend dependencies.
+- Install frontend dependencies (handled in Stage 4).
 
 1.2 Sub Stage: **Configure AWS Account & IAM Roles**
 - Create an AWS account (if not already existing).
