@@ -20,7 +20,7 @@
 
 - **What problem am I solving?**
 
-    I want to build a website where users can view natural foods and their health benefits, supported by legitimate and trusted research sources. The site will also include an **“Ask a Doctor”** section. In future versions, users will be able to access customized meal plans and recipes based on their preferences, and search for natural food recipes.
+    I want to build a website where users can view natural foods and their health benefits, supported by legitimate and trusted research sources. Version 1 focuses on providing a one-click plant-based food knowledge database (vegetables, fruits, nuts, herbs only) without meal planning or recipes.
 
 - **Who experiences this problem?**
 
@@ -28,21 +28,21 @@
 
 - **How often does the problem occur?**
 
-    This problem occurs primarily among health-conscious individuals and people who want ready-made or guided meal plans.
+    This problem occurs among health-conscious individuals seeking reliable, research-backed information about natural ingredients.
 
 - **Why is this problem worth solving?**
 
-    To promote natural health alternatives and help users connect with nearby doctors available for nutrition consultation.
+    To promote natural health alternatives through trustworthy, SEO-optimized content that emphasizes benefits, nutrition facts, risks, and scientific references.
 
 - **What happens if this problem remains unsolved?**
 
-    Users may consume foods that are not suitable for their health and struggle to decide what healthy meals to prepare.
+    Users may rely on unverified sources, leading to confusion about healthy food choices and potential health risks from misinformation.
 
 ---
 
 ### **Suggested Answer Guide**
 
-> “Users struggle to find legitimate information about natural health because reliable sources are often scattered or unclear. This leads to confusion about healthy food choices and difficulty in planning meals, resulting in unhealthy habits and wasted time.”
+> “Users struggle to find legitimate information about natural health because reliable sources are often scattered or unclear. This leads to confusion about healthy food choices and potential health risks from misinformation.”
 >
 
 ---
@@ -57,7 +57,7 @@
 
 - **Are there secondary users or admins?**
 
-    Secondary users could be people searching for healthy food recipes based on their location. Admins are responsible for managing content, verifying sources, and moderating questions in the “Ask a Doctor” section.
+    Admins are responsible for managing content and verifying sources. Version 1 focuses on guest users without mandatory accounts.
 
 - **What is their technical skill level?**
 
@@ -76,7 +76,7 @@
 
 ### **Suggested Answer Guide**
 
-> “Primary users are health-conscious individuals with medium-level technical skills, mostly using smartphones, tablets, and laptops. Secondary users include recipe seekers, while admins manage content and verify sources.”
+> “Primary users are health-conscious individuals with medium-level technical skills, mostly using smartphones, tablets, and laptops. Admins manage content and verify sources, while guest access is emphasized in Version 1.”
 >
 
 ## **1.3 Project Goals (Version 1 Focus)**
@@ -131,15 +131,13 @@
     - Navigation can be confusing, especially for beginners
 - **Features missing or poorly done:**
     - Clear, research-backed risk and caution information for each ingredient
-    - Personalized or location-based meal plans
-    - “Ask a Doctor” consultation or guidance
     - Easy-to-read, beginner-friendly interface with trusted sources
 
 ---
 
 ### **Suggested Answer Summary**
 
-> “Competitors provide ingredient lists, recipes, and general health information but often fail to give accurate, research-backed health details, clear warnings, and personalized recommendations. My project focuses on delivering trustworthy, detailed natural food information, nutrition facts, and expert guidance in a simple, user-friendly website.”
+> “Competitors provide ingredient lists and general health information but often fail to give accurate, research-backed health details and clear warnings. My project focuses on delivering trustworthy, detailed natural food information and nutrition facts in a simple, user-friendly website.”
 >
 
 ---
@@ -149,7 +147,7 @@
 ### **Questions**
 
 - **What are MUST-HAVE features?**
-    - Functional website with user authentication
+    - Functional website (no forced login)
     - Display a comprehensive list of natural ingredients with:
         - Proven Benefits
         - Risks & Warnings
@@ -158,7 +156,8 @@
         - How to Eat (Dosage/Portion)
         - Pro Tips
     - Search and filter functionality for ingredients
-- **What are NICE-TO-HAVE features?**
+- **What are NICE-TO-HAVE features? (Version 2+)**
+    - Optional user authentication
     - Bot consultation for general questions, escalating to a doctor if needed
     - Weight management features (loss/gain tracking)
     - Users can add or modify ingredients; system calculates risks or safety (Personal Chef + Doctor approval)
@@ -175,10 +174,10 @@
 
 ### **Suggested Answer Guide**
 
-> MUST: Authentication, core workflow, ingredient list with essential info
+> MUST: Core workflow, ingredient list with essential info (no forced login)
 >
 >
-> **NICE:** Bot consultation, weight management, ML-based recipe suggestions, location-based doctor search
+> **NICE (V2+):** Optional authentication, bot consultation, weight management, ML-based recipe suggestions, location-based doctor search
 >
 > **OUT:** AI meal planning, mobile app, advanced social features (Version 1)
 >
@@ -283,9 +282,9 @@
 ### **Questions & Suggested Roadmap**
 
 - **What is Version 1? (Foundation — Make it Work)**
-    - Responsive web application
-    - User authentication
-    - Searchable list of natural ingredients
+    - Responsive web application (no forced login)
+    - Optional user authentication
+    - Searchable list of natural ingredients (vegetables, fruits, nuts, herbs)
     - Ingredient details including:
         - Proven benefits
         - Nutrition facts (including calories)
@@ -327,7 +326,7 @@
 
 ### **Suggested Answer Guide**
 
-> Version 1: Core web platform with trusted ingredient data
+> Version 1: Core web platform with trusted ingredient data (no forced login)
 >
 >
 > **Version 2:** UX improvements and structured meal planning
@@ -339,13 +338,13 @@
 
 ---
 
-## **1.10 Monetization Strategy (Suggested & Improved)**
+## **1.10 Monetization Strategy (Version 2+)**
 
 ### **Questions**
 
 - **Does this web/app have premium features?**
 
-    Yes. Premium features are planned for advanced and value-added functionality, including:
+    Monetization is deferred for Version 1. Premium features are planned for Version 2+ and include advanced and value-added functionality, such as:
 
     - Editing and sharing personalized recipes
     - Advanced meal planning tools
@@ -356,12 +355,11 @@
 
 - **Is it free?**
 
-    Yes. Core features will remain free, including:
+    Yes. Version 1 core features are free, including:
 
     - Viewing natural food and ingredient information
     - Access to verified research sources
     - Basic search and filtering
-    - Basic AI or rule-based recipe suggestions (limited usage)
 
 This ensures accessibility and encourages user growth.
 
@@ -369,13 +367,13 @@ This ensures accessibility and encourages user growth.
 
 - **Does it run ads?**
 
-    Yes, but **only for free users**. Premium users will have an **ad-free experience**.
+    No ads in Version 1 (design-only placeholders allowed). Monetization strategies, including ads, are deferred to Version 2+.
 
 ---
 
 ### **Suggested Answer Guide**
 
-> “The application follows a freemium model. Core features are free and ad-supported, while premium features include advanced meal planning, recipe editing and sharing, AI-powered personalization, and professional consultations. Premium users experience no ads.”
+> “Version 1 focuses on content-first delivery without monetization. Future versions may adopt a freemium model with premium features and ad-supported free access.”
 >
 
 ---

@@ -20,8 +20,8 @@
 
 **Suggested Guide**
 
-> GitHub Actions → AWS ECS / EC2
-> 
+> GitHub Actions → AWS EC2 (ECS marked as Version 2+ for scaling)
+>
 
 ---
 

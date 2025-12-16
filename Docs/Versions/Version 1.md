@@ -57,10 +57,6 @@ Version 1.0.0 of the Natural Health Website System focuses on establishing the c
 - Ensure data integrity and efficient querying.
 
 ### **Stage 4: Frontend (React) Development**
-**Development Approach Recommendation:** Start with UI development after completing a functional backend. Use mock data or basic API endpoints for frontend work. The cloud deployment (Stage 5) can be deferred until the UI is fully developed and tested locally.
-
-**Local Development First:** The following stages are designed to be completed entirely locally before considering AWS deployment. This allows you to focus on UI/UX without cloud complexity initially.
-
 4.1 Sub Stage: **Set Up the React Project Using the Starter Repository**
 - Initialize the frontend project by cloning the pre-configured React starter repository that includes modern tooling and essential libraries.
 - The starter repository (https://github.com/Danncode10/Web-Starter-React.git) provides a blank canvas for React applications, pre-configured with:
@@ -414,28 +410,3 @@ Version 1.0.0 of the Natural Health Website System focuses on establishing the c
   - Create AMI snapshots of EC2 weekly.
   - S3 versioning and lifecycle policies for cost management.
 - Security best practices:
-  - Disable root login on EC2, use IAM users.
-  - Restrict security groups to minimum required ports/IPs.
-  - Regularly update software: `sudo apt update && sudo apt upgrade`.
-  - Use environment variables for all secrets, never hardcoded.
-
-5.12 Sub Stage: **Final Deployment Verification**
-- Update environment variables with production URLs.
-- Test the complete flow: Domain access, ingredient search, detail pages.
-- Monitor CloudWatch for errors.
-- Document access credentials and procedures securely.
-
-### **Stage 6: Documentation & Final Review**
-6.1 Sub Stage: **Update Project Documentation**
-- Ensure `README.md` includes setup instructions for local development and AWS deployment.
-- Generate and review API documentation (FastAPI's interactive Swagger UI).
-- Verify environment variable documentation in `.env.example`.
-
-6.2 Sub Stage: **Perform Acceptance Testing**
-- Conduct functional tests to ensure all `Phase 2: SRS` acceptance criteria are met.
-- Perform basic performance checks (page load, search response times).
-- Validate user flows (browsing, searching, viewing details, optional login).
-
-6.3 Sub Stage: **Final Review & Release**
-- Conduct a final review based on `Phase 8: Final Review Checklist`.
-- Prepare for Version 1.0.0 release.
