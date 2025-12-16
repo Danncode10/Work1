@@ -17,6 +17,7 @@ This project adheres to the Conventional Commits specification for git commit me
 From the changes, generate a Git commit message following the format in docs/git_commit_format.md.
 Separate git add commands if needed for selective staging.
 Ensure the commit message is clean, concise, and follows the workflow guidelines.
+Dont run in terminal, just give me the message
 ```
 
 ### Commit Message Structure:
