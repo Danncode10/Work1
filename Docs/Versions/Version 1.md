@@ -57,53 +57,373 @@ Version 1.0.0 of the Natural Health Website System focuses on establishing the c
 - Ensure data integrity and efficient querying.
 
 ### **Stage 4: Frontend (React) Development**
-4.1 Sub Stage: **Initialize React Project Structure**
-- Create a new React application.
-- Set up routing (e.g., React Router) for different pages (home, ingredients list, ingredient detail, login/register).
-- Integrate styling frameworks (Tailwind CSS and Bootstrap).
+**Development Approach Recommendation:** Start with UI development after completing a functional backend. Use mock data or basic API endpoints for frontend work. The cloud deployment (Stage 5) can be deferred until the UI is fully developed and tested locally.
 
-4.2 Sub Stage: **Develop Core UI Components**
-- Create a Navigation bar component.
-- Design a Search Bar component with input handling.
-- Develop an Ingredient Card component for displaying brief ingredient info in a list.
-- Create an Ingredient Detail page component for comprehensive information display (Proven Benefits, Nutrition Facts, Risks & Warnings, Dosage, References).
+**Local Development First:** The following stages are designed to be completed entirely locally before considering AWS deployment. This allows you to focus on UI/UX without cloud complexity initially.
 
-4.3 Sub Stage: **Implement User Interaction & Data Display**
-- Connect React components to FastAPI backend APIs.
-- Implement search functionality to fetch and display filtered ingredients.
-- Implement logic to display detailed ingredient information upon selection.
-- Develop user login/registration forms and handle authenticated sessions.
+4.1 Sub Stage: **Set Up the React Project Using the Starter Repository**
+- Initialize the frontend project by cloning the pre-configured React starter repository that includes modern tooling and essential libraries.
+- The starter repository (https://github.com/Danncode10/Web-Starter-React.git) provides a blank canvas for React applications, pre-configured with:
+  - React 18.2.0 with Vite 5.0.12 for fast development and build processes
+  - Tailwind CSS 3.4.1 for utility-first styling and rapid UI development
+  - Bootstrap 5.3.3 (CSS-only version) for additional component classes and responsive design utilities
+  - Redux Toolkit & React Redux for scalable state management across the application
+  - Essential libraries including React Router (for client-side routing), Axios (for HTTP requests), and clsx (for conditional CSS classes)
+- Follow these step-by-step instructions to set up the frontend project:
+  1. Open your terminal or command prompt in the desired project directory.
+  2. Clone the starter repository into a 'ui' directory: `git clone https://github.com/Danncode10/Web-Starter-React.git ui`
+  3. Navigate into the cloned project directory: `cd ui`
+  4. Remove the existing git history to start fresh: `rm -rf .git`
+  5. Install all project dependencies using npm: `npm install`
+  6. Verify the setup by starting the development server: `npm run dev`
+  - This will launch the development server (typically on http://localhost:5173 for Vite)
+  - The starter includes hot module replacement for fast development iterations
+- Configure environment variables by creating a `.env.local` file in the 'ui' directory with:
+  - `VITE_API_BASE_URL=http://localhost:8000/api` (for development, pointing to the FastAPI backend)
+  - Add any other environment-specific configurations as needed
+- Set up the basic project structure by creating subdirectories in the 'src' folder if needed:
+  - `components/` for reusable UI components
+  - `pages/` for page-level components (Home, Ingredients, etc.)
+  - `store/` for Redux slices and configuration
+  - `services/` for API integration functions
 
-4.4 Sub Stage: **Basic Error Handling & Accessibility**
-- Implement user-friendly error messages for invalid inputs, no search results, login failures, and network errors.
-- Ensure responsive design across mobile, tablet, and desktop.
-- Implement basic keyboard navigation and clear labels for forms/buttons.
+4.2 Sub Stage: **Configure Routing and Overall Layout**
+- Install and configure React Router for handling different application pages.
+- Set up the main router structure to support the following routes:
+  - `/` - Home/Dashboard page
+  - `/ingredients` - Ingredient listing page with search capabilities
+  - `/ingredients/:id` - Detailed ingredient information page
+  - `/login` and `/register` - Authentication pages (optional for browsing)
+- Create a root App component that wraps the entire application with:
+  - Router provider from React Router
+  - Redux Provider for state management
+  - Global styling imports (Tailwind CSS, Bootstrap CSS)
+- Implement a persistent layout component that includes:
+  - A responsive navigation bar (using Bootstrap classes)
+  - A main content area
+  - Optional footer with basic information
+- Ensure all routes are protected or optional based on authentication requirements, implementing redirects as needed
+
+4.3 Sub Stage: **Implement Redux State Management**
+- Configure Redux Toolkit by creating the store configuration in 'src/store/index.js'.
+- Create Redux slices for managing different aspects of the application state:
+  - `ingredientsSlice` for managing ingredient list, selected ingredient, search results, and loading states
+  - `authSlice` for handling user authentication state (if implementing login)
+  - Additional slices for filters, pagination, etc.
+- Define actions and reducers for common operations:
+  - Fetching ingredients from the API
+  - Updating search filters
+  - Managing loading and error states
+  - Handling pagination for large ingredient lists
+- Implement thunks for asynchronous operations like API calls using `createAsyncThunk`
+- Connect React components to Redux state using `useDispatch` and `useSelector` hooks
+
+4.4 Sub Stage: **Develop Core UI Components**
+- Create a responsive Navigation bar component using Bootstrap classes:
+  - Implement mobile-friendly hamburger menu
+  - Include navigation links to main pages
+  - Add search bar integration in the navbar for quick access
+- Design a Search Bar component with advanced features:
+  - Input field with placeholder text ("Search natural ingredients...")
+  - Debounced input to prevent excessive API calls
+  - Integration with Redux for state updates on search changes
+  - Clear button to reset searches
+- Develop an Ingredient Card component for list displays:
+  - Display key information: name, primary benefits, basic nutrition highlights
+  - Implement hover effects and click handlers for navigation to detail pages
+  - Use Tailwind CSS for consistent styling and Bootstrap for responsive grid layouts
+  - Include loading skeletons for better UX
+- Create an Ingredient Detail page component with comprehensive sections:
+  - Header with ingredient name and basic overview
+  - Proven Benefits section using organized lists
+  - Nutrition Facts table or structured display
+  - Risks & Warnings section with clear formatting
+  - Dosage information and recommendations
+  - References section with cited sources
+- Implement additional utility components:
+  - Loading spinner or skeleton components
+  - Error message display components
+  - Pagination controls for large lists
+
+4.5 Sub Stage: **Integrate with Backend APIs**
+- Create service functions in 'src/services/api.js' using Axios:
+  - Base configuration with interceptor for adding authentication tokens
+  - Error handling for API responses (401 unauthorized, 404 not found, etc.)
+- Implement data fetching functions:
+  - `getIngredientsList()` for paginated ingredient fetching
+  - `searchIngredients(query)` for search functionality
+  - `getIngredientById(id)` for detailed ingredient information
+  - `loginUser()` and `registerUser()` for authentication (optional)
+- Connect React components to API functions through Redux thunks:
+  - Dispatch actions to update state when API calls complete
+  - Handle loading states to provide user feedback
+  - Implement error handling for failed requests
+- Add error boundaries to catch and display JavaScript errors gracefully
+
+4.6 Sub Stage: **Implement User Interaction & Data Display Features**
+- Develop interactive search functionality with real-time filtering:
+  - Connect search input to Redux state updates
+  - Trigger API searches with debouncing to prevent rate limiting
+  - Display filtered results using the Ingredient Card components
+- Implement detailed view navigation:
+  - Use React Router's `useNavigate` for programmatic navigation
+  - Pass ingredient data through state or query parameters if needed
+- Create authentication forms (optional):
+  - Login form with email/password fields
+  - Registration form with validation
+  - Form validation using libraries or custom validation functions
+- Add data visualization for nutrition facts:
+  - Use charts or tables for better data presentation
+  - Implement responsive design for different screen sizes
+- Ensure smooth user interactions:
+  - Loading states for all async operations
+  - Optimistic updates for better perceived performance
+  - Clear feedback for user actions (success messages, error handling)
+
+4.7 Sub Stage: **Basic Error Handling, Accessibility & Testing**
+- Implement comprehensive error handling:
+  - User-friendly error messages for network failures
+  - Validation messages for form inputs
+  - Fallback displays when data is not available
+  - Retry mechanisms for failed requests
+- Ensure accessibility compliance:
+  - Use semantic HTML elements (<header>, <main>, <section>, etc.)
+  - Add ARIA labels and roles where necessary
+  - Implement keyboard navigation (tab order, Enter/Space key handling)
+  - Maintain sufficient color contrast ratios
+  - Support screen readers with proper alt text and labeling
+- Verify responsive design across all device sizes:
+  - Mobile-first approach using Bootstrap's responsive classes
+  - Test on multiple breakpoints (xs, sm, md, lg, xl)
+  - Ensure touch-friendly button sizes and spacing
+- Implement basic automated testing:
+  - Unit tests for Redux slices and utility functions
+  - Component tests using React Testing Library
+  - End-to-end tests for critical user flows
 
 ### **Stage 5: Deployment & Operations (AWS)**
-5.1 Sub Stage: **Set up AWS EC2 Instance**
-- Launch a new EC2 instance (e.g., t2.micro for cost efficiency in V1).
-- Install necessary software: Docker, Python, Node.js, Nginx (for reverse proxy/serving static files).
-- Configure security groups to allow HTTP/HTTPS traffic.
+5.1 Sub Stage: **Set up AWS Account and Prerequisites**
+- If you don't have an AWS account, create one at https://aws.amazon.com/free/ (free tier available for 12 months).
+- Sign in to the AWS Management Console at https://console.aws.amazon.com/.
+- Set up Multi-Factor Authentication (MFA) for your root account for security.
+- Create an IAM user with administrative permissions (if not using root for development).
+- Install AWS CLI on your local machine:
+  - Download and install AWS CLI v2 from https://aws.amazon.com/cli/.
+  - Configure AWS CLI by running `aws configure` in your terminal and entering your Access Key ID, Secret Access Key, default region (e.g., us-east-1), and output format (json).
+- Understand AWS free tier limits to avoid unexpected charges.
 
-5.2 Sub Stage: **Configure AWS RDS (PostgreSQL)**
-- Create a PostgreSQL database instance using AWS RDS.
-- Configure database security group to allow connections from the EC2 instance.
-- Populate the database with initial ingredient data.
+5.2 Sub Stage: **Create Storage with Amazon S3 (For Static Assets)**
+- Navigate to the S3 service in AWS Management Console.
+- Create a new bucket:
+  1. Click "Create bucket".
+  2. Enter a unique bucket name (e.g., "mynaturalhealthwebsite-assets").
+  3. Choose a region (AWS Region) that is geographically close to your users for better performance.
+  4. Keep "ACLs disabled" for Block Public Access (we'll use CloudFront for public access).
+  5. Enable versioning and bucket encryption for security.
+- Configure bucket permissions:
+  - Create a bucket policy to allow CloudFront access (we'll come back to this).
+- Upload static assets (CSS, JS, images) from your React build to the S3 bucket.
 
-5.3 Sub Stage: **Containerization & Deployment**
-- Dockerize the FastAPI backend application.
-- Dockerize the React frontend application (or build and serve static files via Nginx).
-- Deploy Docker containers to the EC2 instance.
-- Configure Nginx as a reverse proxy to serve both frontend and backend from the same domain.
+5.3 Sub Stage: **Set up AWS EC2 Instance**
+- Launch a new EC2 instance (t2.micro is eligible for free tier, 750 hours/month):
+  1. Go to EC2 service in AWS Console.
+  2. Click "Launch Instance".
+  3. Choose an Amazon Machine Image (AMI) - select "Ubuntu Server 22.04 LTS (HVM)" for Linux-based deployment.
+  4. Choose Instance Type: t2.micro (free tier eligible).
+  5. Create a new key pair (or use existing) for SSH access - download the .pem file securely.
+  6. Configure Network Settings: Create a new security group or use default.
+  7. Configure Storage: 8 GB (default) is usually sufficient for small applications.
+- Configure Security Group (firewall rules):
+  - Allow SSH (port 22) from your IP address only (or 0.0.0.0/0 for simplicity, but less secure).
+  - Allow HTTP (port 80) and HTTPS (port 443) from anywhere (0.0.0.0/0).
+  - Optionally allow port 3000 or 8000 for testing (restrict to your IP).
+- Launch the instance and note the Public IP address (you'll need this for SSH).
+- Connect to EC2 via SSH:
+  - Use your terminal: `ssh -i "your-key-pair.pem" ubuntu@<your-instance-public-ip>`
+  - Or use EC2 Instance Connect in AWS Console for web-based access.
+- Update the system: `sudo apt update && sudo apt upgrade -y`
+- Install necessary software:
+  - Docker: `sudo apt install docker.io -y`, then add user to docker group: `sudo usermod -aG docker $USER`, restart terminal.
+  - Node.js: `curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && sudo apt-get install -y nodejs`
+  - Nginx: `sudo apt install nginx -y`
+  - Git: `sudo apt install git -y`
+  - Python and pip: `sudo apt install python3 python3-pip -y`
+- Verify installations: `node --version`, `npm --version`, `docker --version`, `nginx -v`, etc.
 
-5.4 Sub Stage: **Domain & DNS Configuration**
-- Register a domain name using Amazon Route 53.
-- Configure DNS records to point to the EC2 instance or a Load Balancer.
-- Set up HTTPS with ACM (AWS Certificate Manager) and integrate with a Load Balancer or Nginx.
+5.4 Sub Stage: **Configure AWS RDS PostgreSQL Database**
+- Navigate to RDS service in AWS Management Console.
+- Create a new database:
+  1. Click "Create database".
+  2. Choose "Standard create".
+  3. Engine type: PostgreSQL.
+  4. Version: Latest PostgreSQL version (e.g., 15.x).
+  5. Template: Free tier (if eligible) or Dev/Test for cost efficiency.
+  6. DB instance identifier: "mynaturalhealthdb" (unique name).
+  7. Master username: "postgres" (or custom).
+  8. Set master password (note it down securely).
+  9. DB instance class: db.t3.micro (free tier eligible).
+  10. Storage: General Purpose SSD, 20 GB (sufficient for small database).
+  11. VPC: Choose the same VPC as your EC2 instance.
+- Configure additional settings:
+  - Database authentication: Password authentication.
+  - Backup: Disable automated backups to save costs for development.
+  - Monitoring: Enable Enhanced monitoring for basic insights.
+- Configure security group:
+  - Create a new security group for RDS.
+  - Add inbound rule: PostgreSQL (port 5432), source type Custom, source as your EC2 security group ID.
+- Launch the database and note the endpoint (e.g., mynaturalhealthdb.xxxxxx.us-east-1.rds.amazonaws.com).
+- Connect to the database from EC2:
+  - Install PostgreSQL client on EC2: `sudo apt install postgresql-client -y`
+  - Connect using psql: `psql --host=<rds-endpoint> --port=5432 --username=postgres --password --dbname=postgres`
+- Create database tables using your schema from Stage 2.
+- Populate with initial ingredient data using INSERT statements or a script.
 
-5.5 Sub Stage: **Basic Monitoring & Logging**
-- Configure CloudWatch logs for both frontend (e.g., Nginx access/error logs) and backend (FastAPI application logs).
-- Set up basic CloudWatch alarms for critical metrics (e.g., EC2 CPU utilization, RDS database connections).
+5.5 Sub Stage: **Configure AWS Cognito for Authentication (Optional)**
+- Navigate to Cognito service.
+- Create a new user pool:
+  1. Click "Create user pool".
+  2. Authentication providers: User name, email.
+  3. Password policy: Basic settings (8+ characters).
+  4. Required attributes: Email.
+  5. Sign-in options: Email (case insensitive).
+- Create an App client:
+  - Client name: "naturalhealthwebapp"
+  - Client type: Public client
+  - Dont generate client secret.
+  - Note the User Pool ID and Client ID for environment variables.
+- Configure domain: Set up a domain for hosted UI if needed.
+
+5.6 Sub Stage: **Prepare Application for Deployment**
+- On your local machine, prepare the backend:
+  - Create Dockerfile for FastAPI app in backend directory.
+  - Example Dockerfile content:
+    ```
+    FROM python:3.11-slim
+    WORKDIR /app
+    COPY requirements.txt .
+    RUN pip install -r requirements.txt
+    COPY . .
+    EXPOSE 8000
+    CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+    ```
+  - Update environment variables in .env for production:
+    - DATABASE_URL=postgresql://username:password@rds-endpoint:5432/database
+    - AWS_REGION=us-east-1
+    - AWS_COGNITO_USER_POOL_ID=your_pool_id
+    - AWS_COGNITO_CLIENT_ID=your_client_id
+- Prepare the frontend:
+  - Build the React app: `npm run build` (creates dist/ folder).
+  - Update .env with production API base URL (your domain/api later).
+  - Optionally, create a Dockerfile for React if using container deployment.
+
+5.7 Sub Stage: **Deploy Applications to EC2**
+- Transfer files to EC2:
+  - Use SCP or git clone your repositories on EC2.
+  - Example for SCP: `scp -i your-key.pem -r backend/ ubuntu@ip:/home/ubuntu/`
+- Build and run containers on EC2:
+  - Build backend image: `cd backend && docker build -t naturalhealth-backend .`
+  - Run backend container: `docker run -d -p 8000:8000 -e DATABASE_URL=... naturalhealth-backend`
+  - For frontend, serve the built files via Nginx (copy dist/ to /var/www/html/naturalhealth)
+- Configure Nginx as reverse proxy:
+  - Create config: `sudo nano /etc/nginx/sites-available/naturalhealth`
+    ```
+    server {
+        listen 80;
+        server_name your-domain.com;  # placeholder, later with domain
+
+        location / {
+            root /var/www/html/naturalhealth;
+            try_files $uri $uri/ /index.html;
+        }
+
+        location /api {
+            proxy_pass http://localhost:8000;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+        }
+    }
+    ```
+  - Enable site: `sudo ln -s /etc/nginx/sites-available/naturalhealth /etc/nginx/sites-enabled/`
+  - Disable default: `sudo unlink /etc/nginx/sites-enabled/default`
+  - Test config: `sudo nginx -t`
+  - Reload: `sudo systemctl reload nginx`
+
+5.8 Sub Stage: **Set up Domain & DNS with Route 53**
+- Register a domain:
+  1. Go to Route 53 in AWS Console.
+  2. Click "Register domain".
+  3. Search for available domain names (e.g., naturalhealthsite.com).
+  4. Add to cart and complete purchase (annual fees apply).
+- Create a hosted zone:
+  1. In Route 53, go to "Hosted zones".
+  2. Click "Create hosted zone".
+  3. Enter your domain name.
+  4. Note the 4 name servers listed (NS records).
+- If domain was registered elsewhere, update domain's name servers to AWS NS records.
+- Add DNS records:
+  - A record: Name "@" (root), Value is your EC2 public IP, Type A, TTL 300.
+  - Optionally, A record for "www" pointing to same IP.
+  - A record for subdomain APIs if needed.
+- For CloudFront (if using S3 for assets):
+  - Create distribution in CloudFront.
+  - Origin: S3 bucket.
+  - Alternate domain names: your domain or cdn subdomain.
+  - Add CNAME record in Route 53 pointing to CloudFront URL.
+
+5.9 Sub Stage: **Configure SSL with AWS Certificate Manager**
+- Go to AWS Certificate Manager (ACM).
+- Request a certificate:
+  1. Click "Request a certificate".
+  2. Public certificate, Next.
+  3. Add domain names: your-domain.com and www.your-domain.com.
+  4. Choose DNS validation (recommended).
+- Add validation CNAME records to Route 53 hosted zone (records provided by ACM).
+- Import certificate to EC2 for Nginx:
+  - Export certificate from ACM (but ACM certificates can't be exported).
+  - Alternative: Use Let's Encrypt on EC2: `sudo apt install certbot python3-certbot-nginx -y`
+  - Run: `sudo certbot --nginx -d your-domain.com -d www.your-domain.com`
+  - Update Nginx config to use HTTPS (certbot will handle it).
+- Redirect HTTP to HTTPS in Nginx config:
+  ```
+  server {
+      listen 80;
+      server_name your-domain.com www.your-domain.com;
+      return 301 https://$server_name$request_uri;
+  }
+  ```
+
+5.10 Sub Stage: **Set up Monitoring and Logging**
+- Enable CloudWatch for EC2:
+  - Install CloudWatch agent: `wget https://s3.amazonaws.com/amazoncloudwatch-agent/amazon_linux/amd64/latest/amazon-cloudwatch-agent.rpm && sudo rpm -Uvh amazon-cloudwatch-agent.rpm`
+  - Configure: `/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard`
+- Configure CloudWatch logs for application:
+  - Create log groups for frontend (Nginx) and backend.
+  - Use AWS CLI or SDK to send logs.
+- Set up CloudWatch alarms:
+  1. Go to CloudWatch > Alarms.
+  2. Create alarm for EC2 CPU > 80%.
+  3. Create alarm for RDS free storage < 5GB.
+  4. Configure SNS topic for email notifications.
+- Basic cost monitoring:
+  - Use AWS Cost Explorer to track spending.
+  - Set up budget alerts in Billing console.
+
+5.11 Sub Stage: **Security Hardening and Backup**
+- Configure backup strategies:
+  - Enable automated RDS backups (retain 7 days).
+  - Create AMI snapshots of EC2 weekly.
+  - S3 versioning and lifecycle policies for cost management.
+- Security best practices:
+  - Disable root login on EC2, use IAM users.
+  - Restrict security groups to minimum required ports/IPs.
+  - Regularly update software: `sudo apt update && sudo apt upgrade`.
+  - Use environment variables for all secrets, never hardcoded.
+
+5.12 Sub Stage: **Final Deployment Verification**
+- Update environment variables with production URLs.
+- Test the complete flow: Domain access, ingredient search, detail pages.
+- Monitor CloudWatch for errors.
+- Document access credentials and procedures securely.
 
 ### **Stage 6: Documentation & Final Review**
 6.1 Sub Stage: **Update Project Documentation**
