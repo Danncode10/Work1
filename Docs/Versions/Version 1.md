@@ -3,6 +3,18 @@
 ## Summary
 Version 1.0.0 of the Natural Health Website System focuses on establishing the core web platform. It includes essential features such as user authentication (optional for browsing), a searchable list of natural ingredients with detailed information (proven benefits, nutrition facts, risks & warnings, usage recommendations), basic error handling, and accessibility features. The system will be deployed on AWS with basic monitoring to ensure a stable foundation for future enhancements.
 
+## Medical & Educational Disclaimer
+This platform provides educational information about natural ingredients and their general uses. It is not intended to diagnose, treat, cure, or prevent any disease. Users should consult qualified healthcare professionals for personalized medical advice, diagnosis, or treatment. The information presented is for informational purposes only and should not replace professional medical judgment.
+
+## Version 1.0.0 — Explicit Non-Goals
+Version 1.0.0 does NOT include:
+- AI-powered diagnosis or health recommendations
+- Personalized medical advice or user profiles
+- Subscription models or premium features
+- User-generated content or community forums
+- Advanced analytics or data mining
+- Third-party integrations beyond basic AWS services
+
 ## Detailed Developmental Stages for Version 1.0.0
 
 ### **Stage 1: Initial Setup & Environment Configuration**
@@ -31,6 +43,11 @@ Version 1.0.0 of the Natural Health Website System focuses on establishing the c
 2.2 Sub Stage: **Define Database Schema**
  - Create `users` table: `id (SERIAL PRIMARY KEY), email (VARCHAR UNIQUE NOT NULL), password_hash (VARCHAR NOT NULL), created_at (TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`.
 - Create `ingredients` table: `id (SERIAL PRIMARY KEY), name (VARCHAR NOT NULL), benefits (TEXT[]), risks (TEXT[]), nutrition_facts (JSONB), dosage (TEXT), calories (FLOAT), references (TEXT[])`.
+
+2.2.1 **Ingredient Data Sources & Trust Model**
+- Ingredient data is sourced from reputable references including peer-reviewed studies, government nutrition databases, and recognized health organizations.
+- Each ingredient must include at least one scientific or authoritative reference in the `references` field.
+- Data is manually curated to ensure accuracy and trustworthiness; no automated or AI-generated content is included.
 
 2.3 Sub Stage: **Implement Database Connection & ORM**
 - Integrate a PostgreSQL client library (e.g., `asyncpg` for FastAPI) into the backend.
@@ -196,6 +213,7 @@ Version 1.0.0 of the Natural Health Website System focuses on establishing the c
   - Unit tests for Redux slices and utility functions
   - Component tests using React Testing Library
   - End-to-end tests for critical user flows
+  - (Advanced testing suites, such as full CI/CD pipelines or load testing, are Optional / Post-V1)
 
 ### **Stage 5: Deployment & Operations (AWS)**
 5.1 Sub Stage: **Set up AWS Account and Prerequisites**
@@ -273,6 +291,7 @@ Version 1.0.0 of the Natural Health Website System focuses on establishing the c
   - Connect using psql: `psql --host=<rds-endpoint> --port=5432 --username=postgres --password --dbname=postgres`
 - Create database tables using your schema from Stage 2.
 - Populate with initial ingredient data using INSERT statements or a script.
+- Note: Ingredient data is seeded manually via scripts or database imports. An admin dashboard for ongoing data management is deferred to later versions.
 
 5.5 Sub Stage: **Configure AWS Cognito for Authentication (Optional)**
 - Navigate to Cognito service.
@@ -403,6 +422,7 @@ Version 1.0.0 of the Natural Health Website System focuses on establishing the c
 - Basic cost monitoring:
   - Use AWS Cost Explorer to track spending.
   - Set up budget alerts in Billing console.
+  - (Heavy monitoring, such as detailed metrics dashboards or advanced alerting systems, is Optional / Post-V1)
 
 5.11 Sub Stage: **Security Hardening and Backup**
 - Configure backup strategies:
@@ -410,3 +430,12 @@ Version 1.0.0 of the Natural Health Website System focuses on establishing the c
   - Create AMI snapshots of EC2 weekly.
   - S3 versioning and lifecycle policies for cost management.
 - Security best practices:
+
+## Version 1 Success Metrics / Acceptance Summary
+Version 1.0.0 is considered successful if the following measurable criteria are met:
+- Search functionality works reliably across all ingredients.
+- Ingredient detail pages load within 2 seconds on standard connections.
+- Mobile accessibility scores at least 90% on Lighthouse.
+- System maintains 99% uptime during operational periods.
+- No critical security vulnerabilities are present.
+- All core features (browsing, searching, viewing details) function without errors in production.
