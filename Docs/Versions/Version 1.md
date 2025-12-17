@@ -44,12 +44,12 @@ Version 1.0.0 does NOT include:
  - Create `users` table: `id (SERIAL PRIMARY KEY), email (VARCHAR UNIQUE NOT NULL), password_hash (VARCHAR NOT NULL), created_at (TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`.
 - Create `ingredients` table: `id (SERIAL PRIMARY KEY), name (VARCHAR NOT NULL), benefits (TEXT[]), risks (TEXT[]), nutrition_facts (JSONB), dosage (TEXT), calories (FLOAT), references (TEXT[])`.
 
-2.2.1 **Ingredient Data Sources & Trust Model**
+2.3 **Ingredient Data Sources & Trust Model**
 - Ingredient data is sourced from reputable references including peer-reviewed studies, government nutrition databases, and recognized health organizations.
 - Each ingredient must include at least one scientific or authoritative reference in the `references` field.
 - Data is manually curated to ensure accuracy and trustworthiness; no automated or AI-generated content is included.
 
-2.3 Sub Stage: **Implement Database Connection & ORM**
+2.4 Sub Stage: **Implement Database Connection & ORM**
 - Integrate a PostgreSQL client library (e.g., `asyncpg` for FastAPI) into the backend.
 - Implement database session management.
 
