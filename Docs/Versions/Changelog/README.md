@@ -14,9 +14,9 @@ Changelog/
 ```
 
 ### File Naming Convention
-- `v_{major}_{minor}_{batch}.md`
+- `v_{major}_{stage}_{batch}.md`
 - `major`: Version number (e.g., 1 for V1)
-- `minor`: Stage number (e.g., 1 for Stage 1)
+- `stage`: Stage number (e.g., 1 for Stage 1)
 - `batch`: Edit batch within that stage (e.g., 1 for first set of changes)
 
 ### Changelog File Structure
