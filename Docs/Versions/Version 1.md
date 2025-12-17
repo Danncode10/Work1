@@ -36,11 +36,11 @@ Version 1.0.0 does NOT include:
 - Populate a local `.env` file with development-specific values (only AWS credentials updated; database and Cognito IDs use placeholders pending later stages).
 
 ### **Stage 2: Database Design & Implementation**
-2.1 Sub Stage: **Set up Local PostgreSQL Database**
+2.1 ✅ Sub Stage: **Set up Local PostgreSQL Database**
 - Install PostgreSQL locally (e.g., using Docker or Homebrew).
 - Create a new database for the project.
 
-2.2 Sub Stage: **Define Database Schema**
+2.2 ✅ Sub Stage: **Define Database Schema**
  - Create `users` table: `id (SERIAL PRIMARY KEY), email (VARCHAR UNIQUE NOT NULL), password_hash (VARCHAR NOT NULL), created_at (TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`.
 - Create `ingredients` table: `id (SERIAL PRIMARY KEY), name (VARCHAR NOT NULL), benefits (TEXT[]), risks (TEXT[]), nutrition_facts (JSONB), dosage (TEXT), calories (FLOAT), references (TEXT[])`.
 
