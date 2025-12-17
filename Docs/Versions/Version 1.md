@@ -18,14 +18,14 @@ Version 1.0.0 does NOT include:
 ## Detailed Developmental Stages for Version 1.0.0
 
 ### **Stage 1: Initial Setup & Environment Configuration**
-1.1 Sub Stage: **Set up Local Development Environment**
+1.1 ✅ Sub Stage: **Set up Local Development Environment**
 - Install Python (3.9+).
 - Install Python package manager (Poetry recommended).
 - Configure Git and clone the project repository.
 - Create a virtual environment for Python and install backend dependencies.
 - Install frontend dependencies (handled in Stage 4).
 
-1.2 Sub Stage: **Configure AWS Account & IAM Roles**
+1.2 ✅ Sub Stage: **Configure AWS Account & IAM Roles**
 - Create an AWS account (if not already existing).
 - Configure AWS CLI with appropriate credentials (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`).
 - Create IAM roles for EC2 instance with permissions to access RDS and CloudWatch.
