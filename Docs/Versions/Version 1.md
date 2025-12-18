@@ -63,6 +63,11 @@ Version 1.0.0 does NOT include:
   - Define ORM models for users and ingredients tables using SQLAlchemy declarative base.
   - Integrate database setup into FastAPI application with automatic table creation on startup.
 
+  3.1.1.3 🔶 Sub Stage: **Add Development Script for Running the Server**
+  - Add a script in pyproject.toml for convenience: [tool.poetry.scripts] dev = "uvicorn app.main:app --reload"
+  - This allows running the development server with the shorter command: poetry run dev
+  - Update Poetry lock file if necessary after changes.
+
 3.2 Sub Stage: **Implement Authentication APIs (AWS Cognito Integration)**
 - Set up an AWS Cognito User Pool and App Client (as per `Phase 2: SRS`).
 - Develop API endpoints for user registration (`/auth/register`) and login (`/auth/login`).

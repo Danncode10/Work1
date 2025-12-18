@@ -19,6 +19,8 @@ Changelog/
 - `stage`: Stage number (e.g., 1 for Stage 1)
 - `batch`: Edit batch within that stage (e.g., 1 for first set of changes)
 
+### Short Summary
+
 ### Changelog File Structure
 Each changelog file follows this format:
 
