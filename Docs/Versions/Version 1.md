@@ -44,19 +44,19 @@ Version 1.0.0 does NOT include:
  - Create `users` table: `id (SERIAL PRIMARY KEY), email (VARCHAR UNIQUE NOT NULL), password_hash (VARCHAR NOT NULL), created_at (TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`.
 - Create `ingredients` table: `id (SERIAL PRIMARY KEY), name (VARCHAR NOT NULL), benefits (TEXT[]), risks (TEXT[]), nutrition_facts (JSONB), dosage (TEXT), calories (FLOAT), references (TEXT[])`.
 
-2.3 **Ingredient Data Sources & Trust Model**
+2.3 ✅ **Ingredient Data Sources & Trust Model**
 - Ingredient data is sourced from reputable references including peer-reviewed studies, government nutrition databases, and recognized health organizations.
 - Each ingredient must include at least one scientific or authoritative reference in the `references` field.
 - Data is manually curated to ensure accuracy and trustworthiness; no automated or AI-generated content is included.
 
-2.4 Sub Stage: **Implement Database Connection & ORM**
-- Integrate a PostgreSQL client library (e.g., `asyncpg` for FastAPI) into the backend.
-- Implement database session management.
-
 ### **Stage 3: Backend (FastAPI) Development**
-3.1 Sub Stage: **Initialize FastAPI Project Structure**
+3.1 ✅ Sub Stage: **Initialize FastAPI Project Structure**
 - Create a basic FastAPI application.
 - Structure the project into logical modules (e.g., `app/api`, `app/models`, `app/crud`, `app/core`).
+
+3.1.1 Sub Stage: **Implement Database Connection & ORM**
+- Integrate a PostgreSQL client library (e.g., `asyncpg` for FastAPI) into the backend.
+- Implement database session management.
 
 3.2 Sub Stage: **Implement Authentication APIs (AWS Cognito Integration)**
 - Set up an AWS Cognito User Pool and App Client (as per `Phase 2: SRS`).
