@@ -54,9 +54,14 @@ Version 1.0.0 does NOT include:
 - Create a basic FastAPI application.
 - Structure the project into logical modules (e.g., `app/api`, `app/models`, `app/crud`, `app/core`).
 
-3.1.1 Sub Stage: **Implement Database Connection & ORM**
-- Integrate a PostgreSQL client library (e.g., `asyncpg` for FastAPI) into the backend.
-- Implement database session management.
+  3.1.1.1 ✅ Sub Stage: **Add Database Dependencies** 
+  - Install database dependencies via Poetry (FastAPI, Uvicorn, asyncpg, SQLAlchemy, pydantic-settings).
+
+  3.1.1.2 ✅ Sub Stage: **Complete Database Connection & ORM Setup** 
+  - Configure database connection settings using pydantic-settings to read DATABASE_URL from .env file.
+  - Set up SQLAlchemy async engine and session management for PostgreSQL with asyncpg driver.
+  - Define ORM models for users and ingredients tables using SQLAlchemy declarative base.
+  - Integrate database setup into FastAPI application with automatic table creation on startup.
 
 3.2 Sub Stage: **Implement Authentication APIs (AWS Cognito Integration)**
 - Set up an AWS Cognito User Pool and App Client (as per `Phase 2: SRS`).
