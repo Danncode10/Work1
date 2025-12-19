@@ -19,6 +19,45 @@ The project is currently in documentation development. Once implementation begin
 
 *Last documented update: Version 1.0.0 development stages fully detailed with UI setup and AWS deployment guides.*
 
+## Development Setup
+
+### Starting the Backend (FastAPI)
+
+To start the FastAPI backend server for development:
+
+1. Navigate to the backend directory:
+   ```
+   cd backend
+   ```
+
+2. Run the development script:
+   ```
+   ./dev.sh
+   ```
+
+The server will start on `http://localhost:8000` with hot reloading enabled.
+
+### Starting the Frontend (React)
+
+To start the React frontend development server:
+
+1. Navigate to the ui directory:
+   ```
+   cd ui
+   ```
+
+2. Install dependencies (if not already done):
+   ```
+   npm install
+   ```
+
+3. Start the development server:
+   ```
+   npm run dev
+   ```
+
+The frontend will be available at `http://localhost:5173`.
+
 ## Documentation Guide
 This repository provides comprehensive documentation structured for systematic development:
 
