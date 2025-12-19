@@ -1,8 +1,11 @@
 from fastapi import FastAPI
 from .core.database import engine
 from .models.models import Base
+from app.api import auth_router
 
 app = FastAPI(title="Natural Health API", version="1.0.0")
+
+app.include_router(auth_router)
 
 @app.on_event("startup")
 async def startup():
