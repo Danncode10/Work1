@@ -100,23 +100,33 @@ Version 1.0.0 does NOT include:
   - Bootstrap 5.3.3 (CSS-only version) for additional component classes and responsive design utilities
   - Redux Toolkit & React Redux for scalable state management across the application
   - Essential libraries including React Router (for client-side routing), Axios (for HTTP requests), and clsx (for conditional CSS classes)
-- Follow these step-by-step instructions to set up the frontend project:
-  1. Open your terminal or command prompt in the desired project directory.
-  2. Clone the starter repository into a 'ui' directory: `git clone https://github.com/Danncode10/Web-Starter-React.git ui`
-  3. Navigate into the cloned project directory: `cd ui`
-  4. Remove the existing git history to start fresh: `rm -rf .git`
-  5. Install all project dependencies using npm: `npm install`
-  6. Verify the setup by starting the development server: `npm run dev`
-  - This will launch the development server (typically on http://localhost:5173 for Vite)
-  - The starter includes hot module replacement for fast development iterations
-- Configure environment variables by creating a `.env.local` file in the 'ui' directory with:
-  - `VITE_API_BASE_URL=http://localhost:8000/api` (for development, pointing to the FastAPI backend)
-  - Add any other environment-specific configurations as needed
-- Set up the basic project structure by creating subdirectories in the 'src' folder if needed:
-  - `components/` for reusable UI components
-  - `pages/` for page-level components (Home, Ingredients, etc.)
-  - `store/` for Redux slices and configuration
-  - `services/` for API integration functions
+
+  4.1.1 Sub Stage: **Clone the Starter Repository**
+  - [x] Open your terminal or command prompt in the desired project directory.
+  - [x] Clone the starter repository into a 'ui' directory: `git clone https://github.com/Danncode10/Web-Starter-React.git ui`
+
+  4.1.2 Sub Stage: **Navigate and Clean Git History**
+  - [x] Navigate into the cloned project directory: `cd ui`
+  - [x] Remove the existing git history to start fresh: `rm -rf .git`
+
+  4.1.3 Sub Stage: **Install Project Dependencies**
+  - [x] Install all project dependencies using npm: `npm install`
+
+  4.1.4 Sub Stage: **Start Development Server**
+  - [x] Verify the setup by starting the development server: `npm run dev`
+  - [x] Confirm the development server launches (typically on http://localhost:5173 for Vite)
+  - [x] Verify hot module replacement is working for fast development iterations
+
+  4.1.5 Sub Stage: **Configure Environment Variables**
+  - [x] Create a `.env.local` file in the 'ui' directory
+  - [x] Add `VITE_API_BASE_URL=http://localhost:8000/api` (for development, pointing to the FastAPI backend)
+
+  4.1.6 Sub Stage: **Set Up Basic Project Structure**
+  - [x] Create subdirectories in the 'src' folder if needed:
+    - [x] `components/` for reusable UI components
+    - [x] `pages/` for page-level components (Home, Ingredients, etc.)
+    - [x] `store/` for Redux slices and configuration
+    - [x] `services/` for API integration functions
 
 4.2 Sub Stage: **Configure Routing and Overall Layout**
 - Install and configure React Router for handling different application pages.
