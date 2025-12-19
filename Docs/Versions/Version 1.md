@@ -134,8 +134,8 @@ Version 1.0.0 does NOT include:
   - [x] Install React Router DOM package in the ui directory using npm
 
   4.2.2 Sub Stage: **Set Up Main Router Structure**
-  - [ ] Create router configuration in App.jsx with routes for /, /ingredients, /ingredients/:id, /login, /register
-  - [ ] Implement route definitions and component mappings
+  - [x] Create router configuration in App.jsx with routes for /, /ingredients, /ingredients/:id, /login, /register
+  - [x] Implement route definitions and component mappings
 
   4.2.3 Sub Stage: **Create Root App Component with Providers**
   - [ ] Wrap application with Router provider from React Router
