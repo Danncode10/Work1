@@ -1,156 +1,135 @@
-# React Stable Starter
+# Natural Health Website System - Frontend
 
-A production-ready, beginner-friendly starter repository for building blank websites with React, Tailwind CSS, and Bootstrap. Designed for maximum compatibility, minimal install errors, and clean software engineering practices.
+The frontend component of the Natural Health Website System, an educational platform for browsing and learning about natural ingredients. Built with React and modern web technologies, this application provides users with searchable access to detailed information about natural ingredients including benefits, nutrition facts, risks, warnings, dosage recommendations, and scientific references.
 
 ## What This Is
 
-This starter provides a blank canvas for React applications, pre-configured with:
-- React 18.2.0 with Vite 5.0.12 for fast development
-- Tailwind CSS 3.4.1 for utility-first styling
-- Bootstrap 5.3.3 (CSS-only) for component classes
-- Redux Toolkit & React Redux for state management
-- Essential libraries like React Router, Axios, and clsx
+This is the React frontend for the Natural Health Website System, designed to provide:
 
-It's perfect for beginners who want to start coding immediately without wrestling with setup issues, and for experienced developers who need a reliable, stable foundation.
+- **Browse Ingredients**: View a comprehensive list of natural ingredients
+- **Search Functionality**: Find ingredients by name or keyword
+- **Detailed Information**: Access proven benefits, nutrition facts (including calories), risks & warnings, dosage, and research references
+- **Optional Authentication**: User registration and login through AWS Cognito (optional for browsing)
+- **Responsive Design**: Works seamlessly across desktop and mobile devices
+- **Educational Focus**: All information is sourced from reputable scientific and health organization references
 
-## Why This Starter?
+The application connects to a FastAPI backend that serves ingredient data from a PostgreSQL database, with full-text search capabilities.
 
-- **Zero Peer Dependency Conflicts**: All packages are pinned to stable, compatible versions
-- **No Experimental Features**: Uses proven, widely-supported technologies
-- **Easy Cloning**: Works out of the box with minimal setup
-- **Beginner-Proof**: Clear documentation and structure
-- **Professional Quality**: Follows software engineering best practices
+## Tech Stack
+
+- **React 18.2.0** with **Vite 5.0.12** for fast development and building
+- **Tailwind CSS 3.4.1** for utility-first styling
+- **Bootstrap 5.3.3** (CSS-only) for responsive component classes
+- **Redux Toolkit & React Redux** for state management
+- **React Router** for client-side routing
+- **Axios** for API communication with the FastAPI backend
+- **clsx** for conditional CSS classes
 
 ## System Requirements
 
-- Node.js 18.x (LTS)
+- Node.js 18.x (LTS) or later
 - npm 9.x or later
+- Running FastAPI backend server (see backend/README.md)
 
 ## Installation Guide
 
-Follow these steps to set up your new project:
+Follow these steps to set up the frontend:
 
 ```bash
-# Clone the repository
-git clone https://github.com/Danncode10/Web-Starter-React.git ui
-
-# Navigate to the project directory
-cd my-project
-
-# Remove the git history to start fresh
-rm -rf .git
+# Navigate to the ui directory
+cd ui
 
 # Install dependencies
 npm install
+
+# Copy environment variables
+cp .env.local.example .env.local
+
+# Edit .env.local with your backend URL
+# VITE_API_BASE_URL=http://localhost:8000/api
 
 # Start the development server
 npm run dev
 ```
 
-**Why `rm -rf .git`?** This removes the starter's git history, allowing you to initialize a fresh repository for your own project.
+**Important**: Ensure the FastAPI backend is running before starting the frontend. The backend provides the ingredient data and search functionality.
 
 ## Available Scripts
 
 ```bash
-npm run dev      # Start development server
+npm run dev      # Start development server (http://localhost:5173)
 npm run build    # Build for production
-npm run preview  # Preview production build
-```
-
-## Troubleshooting
-
-If installation fails:
-
-1. Delete `node_modules` directory
-2. Delete `package-lock.json`
-3. Run `npm install` again
-
-**Important Notes:**
-- Do not mix npm with yarn or pnpm
-- Ensure you have the correct Node.js version (18.x)
-- Check that npm is updated to version 9.x or later
-
-## Design Philosophy
-
-### Version Stability
-All package versions are pinned to specific, stable releases to prevent unexpected breaking changes. This ensures the starter remains reliable over time.
-
-### No ESLint Included
-ESLint is excluded to avoid configuration complexity for beginners. You can add it later when your project matures.
-
-### Stability Over Features
-This starter prioritizes compatibility and reliability over cutting-edge features. It's built with proven technologies that work consistently across different environments.
-
-## Project Structure
-
-```
-react-stable-starter/
-├─ src/
-│  ├─ components/
-│  │  ├─ ExampleButton.jsx    # Reusable button component
-│  │  └─ ReduxCounter.jsx     # Demo component using Redux state
-│  ├─ pages/
-│  │  └─ Home.jsx             # Home page component
-│  ├─ layouts/
-│  │  └─ MainLayout.jsx       # Main layout wrapper
-│  ├─ store/
-│  │  ├─ index.js             # Main Redux store configuration
-│  │  └─ slices/
-│  │     └─ counterSlice.js   # Example Redux slice (counter)
-│  ├─ styles/
-│  │  └─ index.css            # Global styles with Tailwind
-│  ├─ App.jsx                 # Main app component
-│  └─ main.jsx                # Entry point with Redux Provider
-├─ public/                    # Static assets
-├─ .env.example               # Environment variables template
-├─ .gitignore                 # Git ignore rules
-├─ .nvmrc                     # Node version specification
-├─ package.json               # Dependencies and scripts
-├─ requirements.txt           # System requirements
-├─ tailwind.config.js         # Tailwind configuration
-├─ postcss.config.js          # PostCSS configuration
-├─ vite.config.js             # Vite configuration
-└─ index.html                 # HTML template
+npm run preview  # Preview production build locally
 ```
 
 ## Environment Variables
 
-Copy `.env.example` to `.env` and update the values:
+Create a `.env.local` file in the ui directory with:
 
 ```bash
-cp .env.example .env
+VITE_API_BASE_URL=http://localhost:8000/api
 ```
 
-Available variables:
-- `VITE_APP_NAME`: Your application name
-- `VITE_API_BASE_URL`: API base URL for development
+This points to your local FastAPI backend. For production, update this to your deployed backend URL.
 
-## Getting Started with Development
+## Project Structure
 
-1. **Add New Pages**: Create components in `src/pages/` and add routes in `src/App.jsx`
-2. **Create Components**: Use `src/components/` for reusable UI elements
-3. **Styling**: Combine Tailwind utilities with Bootstrap classes as needed
-4. **API Calls**: Use Axios for HTTP requests (already included)
+```
+ui/
+├─ src/
+│  ├─ components/          # Reusable UI components
+│  │  ├─ ExampleButton.jsx # Generic button component
+│  │  └─ ReduxCounter.jsx  # Demo counter component
+│  ├─ pages/               # Page-level components
+│  │  ├─ Home.jsx          # Home/dashboard page
+│  │  └─ Ingredients.jsx   # Ingredient list page (future)
+│  ├─ layouts/             # Layout components
+│  │  └─ MainLayout.jsx    # Main app layout with navigation
+│  ├─ services/            # API service functions
+│  │  └─ api.js            # Axios configuration and API calls
+│  ├─ store/               # Redux state management
+│  │  ├─ index.js          # Redux store configuration
+│  │  └─ slices/           # Redux slices
+│  │     ├─ counterSlice.js # Demo counter slice
+│  │     └─ ingredientsSlice.js # Ingredient data slice (future)
+│  ├─ styles/              # Global styles
+│  │  └─ index.css         # Tailwind CSS imports
+│  ├─ App.jsx              # Main app component with routing
+│  └─ main.jsx             # App entry point
+├─ public/                 # Static assets
+├─ .env.local              # Local environment variables
+├─ .env.local.example      # Environment template
+├─ .gitignore              # Git ignore rules
+├─ .nvmrc                  # Node version specification
+├─ package.json            # Dependencies and scripts
+├─ requirements.txt        # System requirements
+├─ tailwind.config.js      # Tailwind configuration
+├─ postcss.config.js       # PostCSS configuration
+├─ vite.config.js          # Vite configuration
+└─ index.html              # HTML template
+```
 
 ## Redux State Management
 
-This starter comes pre-configured with Redux Toolkit and React Redux for efficient state management.
+The application uses Redux Toolkit for managing application state, including ingredient data, search results, and user authentication status.
 
-### Store Structure
+### Current Store Structure
 
-The Redux store is located in `src/store/`:
-- `store/index.js` - Main store configuration using `configureStore`
-- `store/slices/` - Directory for Redux slices (reducers + actions)
+- `store/index.js`: Main Redux store with counter slice
+- `store/slices/counterSlice.js`: Example counter state management
+
+### Future Slices (Planned)
+
+- `ingredientsSlice.js`: Manage ingredient list, search results, and selected ingredient
+- `authSlice.js`: Handle user authentication state
 
 ### Example Usage
 
-Here's how to use Redux in your components:
-
 ```jsx
 import { useSelector, useDispatch } from 'react-redux'
-import { increment, decrement, incrementByAmount } from '../store/slices/counterSlice'
+import { increment } from '../store/slices/counterSlice'
 
-function MyComponent() {
+function CounterComponent() {
   const count = useSelector((state) => state.counter.value)
   const dispatch = useDispatch()
 
@@ -158,59 +137,75 @@ function MyComponent() {
     <div>
       <h1>Count: {count}</h1>
       <button onClick={() => dispatch(increment())}>+</button>
-      <button onClick={() => dispatch(decrement())}>-</button>
-      <button onClick={() => dispatch(incrementByAmount(5))}>+5</button>
     </div>
   )
 }
 ```
 
-### Creating New Slices
+## API Integration
 
-To add new state management features, create new slice files in `src/store/slices/`:
+The frontend communicates with the FastAPI backend through RESTful APIs:
 
-```javascript
-// src/store/slices/userSlice.js
-import { createSlice } from '@reduxjs/toolkit'
+- `GET /api/ingredients` - Retrieve paginated ingredient list
+- `GET /api/ingredients/{id}` - Get specific ingredient details
+- `POST /api/search` - Search ingredients with full-text search
+- Authentication endpoints (future implementation)
 
-export const userSlice = createSlice({
-  name: 'user',
-  initialState: {
-    name: '',
-    email: ''
-  },
-  reducers: {
-    setUser: (state, action) => {
-      state.name = action.payload.name
-      state.email = action.payload.email
-    },
-    clearUser: (state) => {
-      state.name = ''
-      state.email = ''
-    }
-  }
-})
+API calls are handled in `src/services/api.js` using Axios with interceptors for error handling and authentication headers.
 
-export const { setUser, clearUser } = userSlice.actions
-export default userSlice.reducer
-```
+## Development Workflow
 
-Then add it to your store in `src/store/index.js`:
+1. **Start Backend First**: Ensure FastAPI server is running on port 8000
+2. **Start Frontend**: Run `npm run dev` in ui directory
+3. **Develop Features**: Add components, pages, and API integrations
+4. **Test Locally**: Verify functionality with backend APIs
+5. **Build for Production**: Use `npm run build` for deployment
 
-```javascript
-import userReducer from './slices/userSlice'
+## Troubleshooting
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-    user: userReducer
-  }
-})
-```
+### Common Issues
+
+1. **Backend Connection Failed**
+   - Ensure backend is running: `cd backend && poetry run dev`
+   - Check VITE_API_BASE_URL in .env.local
+   - Verify CORS settings in backend
+
+2. **Build Errors**
+   - Clear node_modules: `rm -rf node_modules && npm install`
+   - Check Node.js version: `node --version` (should be 18.x+)
+
+3. **Styling Issues**
+   - Ensure Tailwind CSS is imported in index.css
+   - Check for conflicting Bootstrap/Tailwind classes
+
+### Development Tips
+
+- Use browser dev tools to inspect API calls
+- Check browser console for React errors
+- Test on multiple screen sizes for responsiveness
+- Use Redux DevTools extension for state debugging
+
+## Features in Development
+
+- Ingredient browsing and search interface
+- Detailed ingredient information pages
+- User authentication (optional)
+- Responsive mobile design
+- Advanced search filters
+- Data visualization for nutrition facts
 
 ## Contributing
 
-This is a starter template. Feel free to fork and customize for your needs.
+This project follows standard React development practices. Please ensure:
+
+- Components are reusable and well-documented
+- State management follows Redux patterns
+- API calls are handled in service files
+- Styling uses Tailwind utilities with Bootstrap classes
+
+## Medical Disclaimer
+
+This platform provides educational information about natural ingredients and their general uses. It is not intended to diagnose, treat, cure, or prevent any disease. Users should consult qualified healthcare professionals for personalized medical advice, diagnosis, or treatment. The information presented is for informational purposes only and should not replace professional medical judgment.
 
 ## License
 
