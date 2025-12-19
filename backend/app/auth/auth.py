@@ -10,16 +10,16 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 # Initialize Cognito client
 cognito_client = boto3.client(
     'cognito-idp',
-    region_name=settings.AWS_REGION,
-    aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-    aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY
+    region_name=settings.aws_region,
+    aws_access_key_id=settings.aws_access_key_id,
+    aws_secret_access_key=settings.aws_secret_access_key
 )
 
 def register_user(email: str, password: str):
     """Register a new user with AWS Cognito"""
     try:
         response = cognito_client.sign_up(
-            ClientId=settings.AWS_COGNITO_CLIENT_ID,
+            ClientId=settings.aws_cognito_client_id,
             Username=email,
             Password=password,
             UserAttributes=[
@@ -37,7 +37,7 @@ def login_user(email: str, password: str):
     """Authenticate user with AWS Cognito"""
     try:
         response = cognito_client.initiate_auth(
-            ClientId=settings.AWS_COGNITO_CLIENT_ID,
+            ClientId=settings.aws_cognito_client_id,
             AuthFlow='USER_PASSWORD_AUTH',
             AuthParameters={
                 'USERNAME': email,
@@ -58,7 +58,7 @@ def verify_token(token: str) -> dict:
     """Verify and decode AWS Cognito JWT token"""
     try:
         # Get Cognito public keys
-        keys_url = f"https://cognito-idp.{settings.AWS_REGION}.amazonaws.com/{settings.AWS_COGNITO_USER_POOL_ID}/.well-known/jwks.json"
+        keys_url = f"https://cognito-idp.{settings.aws_region}.amazonaws.com/{settings.aws_cognito_user_pool_id}/.well-known/jwks.json"
         keys_response = requests.get(keys_url)
         keys = keys_response.json()['keys']
 
@@ -81,8 +81,8 @@ def verify_token(token: str) -> dict:
             token,
             public_key,
             algorithms=['RS256'],
-            audience=settings.AWS_COGNITO_CLIENT_ID,
-            issuer=f"https://cognito-idp.{settings.AWS_REGION}.amazonaws.com/{settings.AWS_COGNITO_USER_POOL_ID}"
+            audience=settings.aws_cognito_client_id,
+            issuer=f"https://cognito-idp.{settings.aws_region}.amazonaws.com/{settings.aws_cognito_user_pool_id}"
         )
 
         return payload
