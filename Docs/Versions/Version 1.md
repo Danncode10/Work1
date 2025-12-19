@@ -83,9 +83,13 @@ Version 1.0.0 does NOT include:
 - Create API endpoint: `POST /search` (Search ingredients with query, utilizing PostgreSQL full-text search as per `Phase 3: Software Design`).
 - Implement data validation for all API inputs and outputs.
 
-3.4 Sub Stage: **Implement Core Business Logic**
-- Develop logic for fetching, searching, and displaying ingredient data from the PostgreSQL database.
-- Ensure data integrity and efficient querying.
+3.4 ✅ Sub Stage: **Implement Core Business Logic**
+- [x] Review and finalize CRUD functions for ingredient data operations (fetching, searching, single-item retrieval)
+- [x] Implement data validation and integrity checks in database queries
+- [x] Optimize query performance for pagination and search operations
+- [x] Add error handling for database operations and edge cases
+- [x] Ensure business rules for data processing are correctly applied
+- [x] Integrate business logic with API endpoints for consistent data flow
 
 ### **Stage 4: Frontend (React) Development**
 4.1 Sub Stage: **Set Up the React Project Using the Starter Repository**
