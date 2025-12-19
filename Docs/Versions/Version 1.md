@@ -68,10 +68,14 @@ Version 1.0.0 does NOT include:
   - This allows running the development server with the shorter command: poetry run dev
   - Update Poetry lock file if necessary after changes.
 
-3.2 Sub Stage: **Implement Authentication APIs (AWS Cognito Integration)**
-- Set up an AWS Cognito User Pool and App Client (as per `Phase 2: SRS`).
-- Develop API endpoints for user registration (`/auth/register`) and login (`/auth/login`).
-- Integrate FastAPI with AWS Cognito for user authentication and token validation.
+3.2 ✅ Sub Stage: **Implement Authentication APIs (AWS Cognito Integration)**
+
+  3.2.1 ✅ Set up AWS Cognito User Pool and App Client
+  3.2.2 ✅ Install AWS Cognito Dependencies and Create Authentication Service Module
+  3.2.3 ✅ Implement Authentication API Endpoints
+  3.2.4 ✅ Implement Token Validation Middleware
+  3.2.5 ✅ AWS Cognito App Client Configuration Update and Troubleshooting
+  3.2.6 ✅ Comprehensive Authentication Endpoint Testing
 
 3.3 Sub Stage: **Develop Ingredient Management APIs**
 - Create API endpoint: `GET /ingredients` (Retrieve paginated ingredient list).
