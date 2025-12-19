@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, EmailStr
-from app.auth.auth import register_user, login_user
+from app.auth.auth import register_user, login_user, get_current_user
 
 # Create router for auth endpoints
 router = APIRouter()
@@ -41,3 +41,13 @@ async def login(request: LoginRequest):
         return LoginResponse(**tokens)
     except Exception as e:
         raise HTTPException(status_code=401, detail=str(e))
+
+# Protected route example
+@router.get("/auth/me")
+async def get_current_user_info(current_user: dict = Depends(get_current_user)):
+    """Protected route that requires authentication"""
+    return {
+        "email": current_user.get("email"),
+        "sub": current_user.get("sub"),
+        "username": current_user.get("cognito:username")
+    }

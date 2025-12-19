@@ -13,6 +13,7 @@ asyncpg = ">=0.31.0,<0.32.0"
 sqlalchemy = ">=2.0.45,<3.0.0"
 pydantic-settings = ">=2.12.0,<3.0.0"
 boto3 = "^1.42.13"
+python-jose = {extras = ["cryptography"], version = "^3.5.0"}
 
 [tool.poetry.scripts]
 dev = "python -m uvicorn app.main:app --reload"
