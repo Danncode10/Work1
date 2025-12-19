@@ -92,7 +92,7 @@ Version 1.0.0 does NOT include:
 - [x] Integrate business logic with API endpoints for consistent data flow
 
 ### **Stage 4: Frontend (React) Development**
-4.1 Sub Stage: **Set Up the React Project Using the Starter Repository**
+4.1 ✅ Sub Stage: **Set Up the React Project Using the Starter Repository**
 - Initialize the frontend project by cloning the pre-configured React starter repository that includes modern tooling and essential libraries.
 - The starter repository (https://github.com/Danncode10/Web-Starter-React.git) provides a blank canvas for React applications, pre-configured with:
   - React 18.2.0 with Vite 5.0.12 for fast development and build processes
@@ -129,21 +129,28 @@ Version 1.0.0 does NOT include:
     - [x] `services/` for API integration functions
 
 4.2 Sub Stage: **Configure Routing and Overall Layout**
-- Install and configure React Router for handling different application pages.
-- Set up the main router structure to support the following routes:
-  - `/` - Home/Dashboard page
-  - `/ingredients` - Ingredient listing page with search capabilities
-  - `/ingredients/:id` - Detailed ingredient information page
-  - `/login` and `/register` - Authentication pages (optional for browsing)
-- Create a root App component that wraps the entire application with:
-  - Router provider from React Router
-  - Redux Provider for state management
-  - Global styling imports (Tailwind CSS, Bootstrap CSS)
-- Implement a persistent layout component that includes:
-  - A responsive navigation bar (using Bootstrap classes)
-  - A main content area
-  - Optional footer with basic information
-- Ensure all routes are protected or optional based on authentication requirements, implementing redirects as needed
+
+  4.2.1 Sub Stage: **Install React Router Dependencies**
+  - [x] Install React Router DOM package in the ui directory using npm
+
+  4.2.2 Sub Stage: **Set Up Main Router Structure**
+  - [ ] Create router configuration in App.jsx with routes for /, /ingredients, /ingredients/:id, /login, /register
+  - [ ] Implement route definitions and component mappings
+
+  4.2.3 Sub Stage: **Create Root App Component with Providers**
+  - [ ] Wrap application with Router provider from React Router
+  - [ ] Integrate Redux Provider for state management
+  - [ ] Add global CSS imports for Tailwind and Bootstrap
+
+  4.2.4 Sub Stage: **Implement Main Layout Component**
+  - [ ] Create persistent layout wrapper with navigation bar using Bootstrap classes
+  - [ ] Add responsive navigation with mobile hamburger menu
+  - [ ] Include main content area and optional footer
+
+  4.2.5 Sub Stage: **Add Route Protection and Redirects**
+  - [ ] Implement logic for optional authentication redirects
+  - [ ] Ensure browsing routes remain accessible without login
+  - [ ] Add authentication checks for protected routes if needed
 
 4.3 Sub Stage: **Implement Redux State Management**
 - Configure Redux Toolkit by creating the store configuration in 'src/store/index.js'.
