@@ -143,9 +143,9 @@ Version 1.0.0 does NOT include:
   - [x] Add global CSS imports for Tailwind and Bootstrap
 
   4.2.4 Sub Stage: **Implement Main Layout Component**
-  - [ ] Create persistent layout wrapper with navigation bar using Bootstrap classes
-  - [ ] Add responsive navigation with mobile hamburger menu
-  - [ ] Include main content area and optional footer
+  - [x] Create persistent layout wrapper with navigation bar using Bootstrap classes
+  - [x] Add responsive navigation with mobile hamburger menu
+  - [x] Include main content area and optional footer
 
   4.2.5 Sub Stage: **Add Route Protection and Redirects**
   - [ ] Implement logic for optional authentication redirects

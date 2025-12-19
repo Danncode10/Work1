@@ -12,6 +12,9 @@
     "node": ">=18 <19"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.9",
+    "@heroicons/react": "^2.2.0",
+    "@popperjs/core": "^2.11.8",
     "@reduxjs/toolkit": "^2.11.1",
     "axios": "1.6.7",
     "clsx": "2.1.0",
