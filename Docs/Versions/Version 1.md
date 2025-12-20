@@ -148,9 +148,15 @@ Version 1.0.0 does NOT include:
   - [x] Include main content area and optional footer
 
   4.2.5 Sub Stage: **Add Route Protection and Redirects**
-  - [ ] Implement logic for optional authentication redirects
-  - [ ] Ensure browsing routes remain accessible without login
-  - [ ] Add authentication checks for protected routes if needed
+  - [x] Implement logic for optional authentication redirects
+  - [x] Ensure browsing routes remain accessible without login
+  - [x] Add authentication checks for protected routes if needed
+
+  4.2.6 Sub Stage: **Establish UI Design System**
+  - [ ] Define color palette for consistent branding
+  - [ ] Set up typography scale and font hierarchy
+  - [ ] Create spacing and sizing guidelines
+  - [ ] Establish component styling standards
 
 4.3 Sub Stage: **Implement Redux State Management**
 - Configure Redux Toolkit by creating the store configuration in 'src/store/index.js'.

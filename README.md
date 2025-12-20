@@ -21,6 +21,18 @@ The project is currently in documentation development. Once implementation begin
 
 ## Development Setup
 
+### Start the env 
+
+1. Navigate to the env directory:
+   ```
+   cd env
+   ```
+
+2. Run the development script:
+   ```
+   source ./bin/activate 
+   ```
+
 ### Starting the Backend (FastAPI)
 
 To start the FastAPI backend server for development:
