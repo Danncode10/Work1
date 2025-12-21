@@ -40,6 +40,14 @@ Version 1.0.0 does NOT include:
 - Install PostgreSQL locally (e.g., using Docker or Homebrew).
 - Create a new database for the project.
 
+  2.1.1 ✅ Sub Stage: **TablePlus Setup Guide** (Jump from (v1.4.2.5))
+  - [x] Install TablePlus via Homebrew: `brew install tableplus`
+  - [x] Launch TablePlus and create new PostgreSQL connection
+  - [x] Configure connection: Host=localhost, Port=5432, User=lesterdannlopez, Database=naturalhealthdb
+  - [x] Test connection and save
+  - [ ] Navigate to ingredients table and insert sample data
+  - [ ] Verify data appears in frontend ingredients list
+
 2.2 ✅ Sub Stage: **Define Database Schema**
  - Create `users` table: `id (SERIAL PRIMARY KEY), email (VARCHAR UNIQUE NOT NULL), password_hash (VARCHAR NOT NULL), created_at (TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`.
 - Create `ingredients` table: `id (SERIAL PRIMARY KEY), name (VARCHAR NOT NULL), benefits (TEXT[]), risks (TEXT[]), nutrition_facts (JSONB), dosage (TEXT), calories (FLOAT), references (TEXT[])`.
@@ -152,7 +160,16 @@ Version 1.0.0 does NOT include:
   - [x] Ensure browsing routes remain accessible without login
   - [x] Add authentication checks for protected routes if needed
 
-  4.2.6 Sub Stage: **Establish UI Design System**
+  4.2.6 Sub Stage: **TablePlus Database Management Setup**
+  - [ ] Install TablePlus via Homebrew
+  - [ ] Configure PostgreSQL connection (host: localhost, port: 5432, user: system username, database: naturalhealthdb)
+  - [ ] Test database connection in TablePlus
+  - [ ] Navigate to ingredients table in TablePlus
+  - [ ] Insert 10 sample natural ingredients with benefits, risks, nutrition facts, dosage, and references
+  - [ ] Verify sample data appears in frontend ingredients list
+  - [ ] Test search functionality with sample data
+
+  4.2.7 Sub Stage: **Establish UI Design System**
   - [ ] Define color palette for consistent branding
   - [ ] Set up typography scale and font hierarchy
   - [ ] Create spacing and sizing guidelines
