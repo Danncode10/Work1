@@ -1,9 +1,19 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from .core.database import engine
 from .models.models import Base
 from app.api import auth_router, ingredients_router
 
 app = FastAPI(title="Natural Health API", version="1.0.0")
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://localhost:5173"],  # Add your frontend URLs
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Add /api prefix to all routes
 app.include_router(auth_router, prefix="/api")

@@ -160,16 +160,7 @@ Version 1.0.0 does NOT include:
   - [x] Ensure browsing routes remain accessible without login
   - [x] Add authentication checks for protected routes if needed
 
-  4.2.6 Sub Stage: **TablePlus Database Management Setup**
-  - [ ] Install TablePlus via Homebrew
-  - [ ] Configure PostgreSQL connection (host: localhost, port: 5432, user: system username, database: naturalhealthdb)
-  - [ ] Test database connection in TablePlus
-  - [ ] Navigate to ingredients table in TablePlus
-  - [ ] Insert 10 sample natural ingredients with benefits, risks, nutrition facts, dosage, and references
-  - [ ] Verify sample data appears in frontend ingredients list
-  - [ ] Test search functionality with sample data
-
-  4.2.7 Sub Stage: **Establish UI Design System**
+  4.2.6 Sub Stage: **Establish UI Design System**
   - [ ] Define color palette for consistent branding
   - [ ] Set up typography scale and font hierarchy
   - [ ] Create spacing and sizing guidelines
