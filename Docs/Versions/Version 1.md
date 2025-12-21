@@ -45,8 +45,8 @@ Version 1.0.0 does NOT include:
   - [x] Launch TablePlus and create new PostgreSQL connection
   - [x] Configure connection: Host=localhost, Port=5432, User=lesterdannlopez, Database=naturalhealthdb
   - [x] Test connection and save
-  - [ ] Navigate to ingredients table and insert sample data
-  - [ ] Verify data appears in frontend ingredients list
+  - [x] Navigate to ingredients table and insert sample data
+  - [x] Verify data appears in frontend ingredients list
 
 2.2 ✅ Sub Stage: **Define Database Schema**
  - Create `users` table: `id (SERIAL PRIMARY KEY), email (VARCHAR UNIQUE NOT NULL), password_hash (VARCHAR NOT NULL), created_at (TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`.

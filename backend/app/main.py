@@ -5,8 +5,9 @@ from app.api import auth_router, ingredients_router
 
 app = FastAPI(title="Natural Health API", version="1.0.0")
 
-app.include_router(auth_router)
-app.include_router(ingredients_router)
+# Add /api prefix to all routes
+app.include_router(auth_router, prefix="/api")
+app.include_router(ingredients_router, prefix="/api")
 
 @app.on_event("startup")
 async def startup():
