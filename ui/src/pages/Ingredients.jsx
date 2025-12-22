@@ -1,11 +1,23 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setQuery } from '../store/slices/filtersSlice';
 import { ingredientsApi } from '../services/api';
 
 function Ingredients() {
   const [ingredients, setIngredients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const { query } = useSelector((state) => state.filters);
+
+  const handleSearchChange = (e) => {
+    dispatch(setQuery(e.target.value));
+  };
+
+  const handleClearSearch = () => {
+    dispatch(setQuery(''));
+  };
 
   useEffect(() => {
     fetchIngredients();
@@ -55,7 +67,29 @@ function Ingredients() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8 text-center">Natural Health Ingredients</h1>
+      <h1 className="text-3xl font-bold mb-4 text-center">Natural Health Ingredients</h1>
+      <div className="mb-8">
+        <div className="max-w-md mx-auto">
+          <div className="relative">
+            <input
+              type="text"
+              className="w-full pl-3 pr-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              placeholder="Search natural ingredients..."
+              value={query}
+              onChange={handleSearchChange}
+            />
+            {query && (
+              <button
+                type="button"
+                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600"
+                onClick={handleClearSearch}
+              >
+                ×
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
 
       {ingredients.length === 0 ? (
         <div className="text-center text-gray-600">

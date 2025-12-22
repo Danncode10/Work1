@@ -187,31 +187,24 @@ Version 1.0.0 does NOT include:
 - [x] Test if it worked
 
 4.4 Sub Stage: **Develop Core UI Components**
-- Create a responsive Navigation bar component using Bootstrap classes:
-  - Implement mobile-friendly hamburger menu
-  - Include navigation links to main pages
-  - Add search bar integration in the navbar for quick access
-- Design a Search Bar component with advanced features:
-  - Input field with placeholder text ("Search natural ingredients...")
-  - Debounced input to prevent excessive API calls
-  - Integration with Redux for state updates on search changes
-  - Clear button to reset searches
-- Develop an Ingredient Card component for list displays:
-  - Display key information: name, primary benefits, basic nutrition highlights
-  - Implement hover effects and click handlers for navigation to detail pages
-  - Use Tailwind CSS for consistent styling and Bootstrap for responsive grid layouts
-  - Include loading skeletons for better UX
-- Create an Ingredient Detail page component with comprehensive sections:
-  - Header with ingredient name and basic overview
-  - Proven Benefits section using organized lists
-  - Nutrition Facts table or structured display
-  - Risks & Warnings section with clear formatting
-  - Dosage information and recommendations
-  - References section with cited sources
-- Implement additional utility components:
-  - Loading spinner or skeleton components
-  - Error message display components
-  - Pagination controls for large lists
+
+  4.4.1 Sub Stage: **Create Navigation Bar Component**
+  - [x] Integrated search bar.
+
+  4.4.2 Sub Stage: **Design Search Bar Component**
+  - [ ] Build a search input with debounced input, Redux integration, and clear functionality.
+
+  4.4.3 Sub Stage: **Develop Ingredient Card Component**
+  - [ ] Create a card for list displays showing key info, hover effects, and navigation handlers.
+
+  4.4.4 Sub Stage: **Create Ingredient Detail Page Component**
+  - [ ] Build a detailed page with header, benefits, nutrition, risks, dosage, and references sections.
+
+  4.4.5 Sub Stage: **Implement Utility Components**
+  - [ ] Add loading spinner/skeleton, error message display, and pagination controls.
+
+  4.4.6 Sub Stage: **Test Stage**
+  - [ ] Verify all components function correctly, integrate with Redux, and ensure responsiveness.
 
 4.5 Sub Stage: **Integrate with Backend APIs**
 - Create service functions in 'src/services/api.js' using Axios:
