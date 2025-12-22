@@ -199,7 +199,7 @@ Version 1.0.0 does NOT include:
   - [x] When the ingredients is clicked, it will redirect to page to show more info
 
   4.4.4 Sub Stage: **Create Ingredient Detail Page Component**
-  - [ ] Build a detailed page with header, benefits, nutrition, risks, dosage, and references sections.
+  - [x] Build a detailed page with header, benefits, nutrition, risks, dosage, and references sections and add back to go back to ingredients
 
   4.4.5 Sub Stage: **Implement Utility Components**
   - [ ] Add loading spinner/skeleton, error message display, and pagination controls.

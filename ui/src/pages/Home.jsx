@@ -1,4 +1,4 @@
-import ExampleButton from '../components/ExampleButton'
+import { Link } from 'react-router-dom'
 
 function Home() {
   return (
@@ -7,7 +7,12 @@ function Home() {
       <p className="mb-4">
         Discover natural ingredients and their health benefits. Search our database of proven natural remedies.
       </p>
-      <ExampleButton>Explore Ingredients</ExampleButton>
+      <Link
+        to="/ingredients"
+        className="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors font-medium"
+      >
+        Explore Ingredients
+      </Link>
     </div>
   )
 }
