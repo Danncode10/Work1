@@ -138,54 +138,53 @@ Version 1.0.0 does NOT include:
 
 4.2 Sub Stage: **Configure Routing and Overall Layout**
 
-  4.2.1 Sub Stage: **Install React Router Dependencies**
+  4.2.1 ✅ Sub Stage: **Install React Router Dependencies**
   - [x] Install React Router DOM package in the ui directory using npm
 
-  4.2.2 Sub Stage: **Set Up Main Router Structure**
+  4.2.2 ✅ Sub Stage: **Set Up Main Router Structure**
   - [x] Create router configuration in App.jsx with routes for /, /ingredients, /ingredients/:id, /login, /register
   - [x] Implement route definitions and component mappings
 
-  4.2.3 Sub Stage: **Create Root App Component with Providers**
+  4.2.3 ✅ Sub Stage: **Create Root App Component with Providers**
   - [x] Wrap application with Router provider from React Router
   - [x] Integrate Redux Provider for state management
   - [x] Add global CSS imports for Tailwind and Bootstrap
 
-  4.2.4 Sub Stage: **Implement Main Layout Component**
+  4.2.4 ✅ Sub Stage: **Implement Main Layout Component**
   - [x] Create persistent layout wrapper with navigation bar using Bootstrap classes
   - [x] Add responsive navigation with mobile hamburger menu
   - [x] Include main content area and optional footer
 
-  4.2.5 Sub Stage: **Add Route Protection and Redirects**
+  4.2.5 ✅ Sub Stage: **Add Route Protection and Redirects**
   - [x] Implement logic for optional authentication redirects
   - [x] Ensure browsing routes remain accessible without login
   - [x] Add authentication checks for protected routes if needed
 
-  4.2.6 Sub Stage: **Suggest a Name for this project 📍**
+  4.2.6 ✅ Sub Stage: **Suggest a Name for this project 📍**
   - [x] Use A.I. to generate name for this project
   - [x] Look for available domain names in GoDaddy
   - [x] Update the github name and folder name of root
   - [x] Update the documentation for no conflict
   - [x] Update UI
 
-  4.2.7 Sub Stage: **Establish UI Design System**
+  4.2.7 ✅ Sub Stage: **Establish UI Design System**
   - [x] Define color palette for consistent branding
   - [x] Set up typography scale and font hierarchy
   - [x] Create spacing and sizing guidelines
   - [x] Establish component styling standards
 
-4.3 Sub Stage: **Implement Redux State Management**
-- Configure Redux Toolkit by creating the store configuration in 'src/store/index.js'.
-- Create Redux slices for managing different aspects of the application state:
-  - `ingredientsSlice` for managing ingredient list, selected ingredient, search results, and loading states
-  - `authSlice` for handling user authentication state (if implementing login)
-  - Additional slices for filters, pagination, etc.
-- Define actions and reducers for common operations:
-  - Fetching ingredients from the API
-  - Updating search filters
-  - Managing loading and error states
-  - Handling pagination for large ingredient lists
-- Implement thunks for asynchronous operations like API calls using `createAsyncThunk`
-- Connect React components to Redux state using `useDispatch` and `useSelector` hooks
+4.3 ✅ Sub Stage: **Implement Redux State Management**
+- [x] Update the Redux store configuration in src/store/index.js to include new reducers for ingredients, auth, filters, and pagination.
+- [x] Create ingredientsSlice.js to manage ingredient list, selected ingredient, search results, loading states, and error handling.
+- [x] Create authSlice.js for user authentication state (login status, tokens, user data).
+- [x] Create filtersSlice.js for search filters and query parameters.
+- [x] Create paginationSlice.js for handling pagination state and controls.
+- [x] Implement async thunks using createAsyncThunk for API operations: fetching ingredients, searching, authentication.
+- [x] Update components to connect to Redux using useDispatch and useSelector hooks.
+- [x] Remove the example counter slice and component from the store and codebase.
+
+4.3.1: Test
+- [x] Test if it worked
 
 4.4 Sub Stage: **Develop Core UI Components**
 - Create a responsive Navigation bar component using Bootstrap classes:

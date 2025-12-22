@@ -78,11 +78,15 @@ This points to your local FastAPI backend. For production, update this to your d
 ui/
 ├─ src/
 │  ├─ components/          # Reusable UI components
+│  │  ├─ AuthRedirect.jsx  # Authentication redirect component
 │  │  ├─ ExampleButton.jsx # Generic button component
-│  │  └─ ReduxCounter.jsx  # Demo counter component
+│  │  ├─ ProtectedRoute.jsx# Protected route component
 │  ├─ pages/               # Page-level components
 │  │  ├─ Home.jsx          # Home/dashboard page
-│  │  └─ Ingredients.jsx   # Ingredient list page (future)
+│  │  ├─ Ingredients.jsx   # Ingredient list page
+│  │  ├─ IngredientDetail.jsx # Ingredient detail page
+│  │  ├─ Login.jsx         # User login page
+│  │  └─ Register.jsx      # User registration page
 │  ├─ layouts/             # Layout components
 │  │  └─ MainLayout.jsx    # Main app layout with navigation
 │  ├─ services/            # API service functions
@@ -90,8 +94,10 @@ ui/
 │  ├─ store/               # Redux state management
 │  │  ├─ index.js          # Redux store configuration
 │  │  └─ slices/           # Redux slices
-│  │     ├─ counterSlice.js # Demo counter slice
-│  │     └─ ingredientsSlice.js # Ingredient data slice (future)
+│  │     ├─ ingredientsSlice.js # Ingredient data management
+│  │     ├─ authSlice.js   # User authentication state
+│  │     ├─ filtersSlice.js# Search filters and parameters
+│  │     └─ paginationSlice.js # Pagination state controls
 │  ├─ styles/              # Global styles
 │  │  └─ index.css         # Tailwind CSS imports
 │  ├─ App.jsx              # Main app component with routing
@@ -111,32 +117,38 @@ ui/
 
 ## Redux State Management
 
-The application uses Redux Toolkit for managing application state, including ingredient data, search results, and user authentication status.
+The application uses Redux Toolkit for managing application state, including ingredient data, search results, user authentication status, filters, and pagination.
 
-### Current Store Structure
+### Store Structure
 
-- `store/index.js`: Main Redux store with counter slice
-- `store/slices/counterSlice.js`: Example counter state management
-
-### Future Slices (Planned)
-
-- `ingredientsSlice.js`: Manage ingredient list, search results, and selected ingredient
-- `authSlice.js`: Handle user authentication state
+- `store/index.js`: Main Redux store configuration with all slices
+- `store/slices/ingredientsSlice.js`: Manages ingredient list, selected ingredient, search results, loading states, and error handling
+- `store/slices/authSlice.js`: Handles user authentication state (login status, tokens, user data)
+- `store/slices/filtersSlice.js`: Manages search filters and query parameters
+- `store/slices/paginationSlice.js`: Controls pagination state and page navigation
 
 ### Example Usage
 
 ```jsx
 import { useSelector, useDispatch } from 'react-redux'
-import { increment } from '../store/slices/counterSlice'
+import { fetchIngredients } from '../store/slices/ingredientsSlice'
 
-function CounterComponent() {
-  const count = useSelector((state) => state.counter.value)
+function IngredientsList() {
+  const { list, loading, error } = useSelector((state) => state.ingredients)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchIngredients())
+  }, [dispatch])
+
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>Error: {error}</div>
 
   return (
     <div>
-      <h1>Count: {count}</h1>
-      <button onClick={() => dispatch(increment())}>+</button>
+      {list.map(ingredient => (
+        <div key={ingredient.id}>{ingredient.name}</div>
+      ))}
     </div>
   )
 }
