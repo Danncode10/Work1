@@ -202,10 +202,10 @@ Version 1.0.0 does NOT include:
   - [x] Build a detailed page with header, benefits, nutrition, risks, dosage, and references sections and add back to go back to ingredients
 
   4.4.5 Sub Stage: **Implement Utility Components**
-  - [ ] Add loading spinner/skeleton, error message display, and pagination controls.
+  - [x] Add loading spinner/skeleton, error message display, and pagination controls.
 
   4.4.6 Sub Stage: **Test Stage**
-  - [ ] Verify all components function correctly, integrate with Redux, and ensure responsiveness.
+  - [x] Verify all components function correctly, integrate with Redux, and ensure responsiveness.
 
 4.5 Sub Stage: **Integrate with Backend APIs**
 - Create service functions in 'src/services/api.js' using Axios:
