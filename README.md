@@ -35,7 +35,7 @@ The project is currently in documentation development. Once implementation begin
 
 ### Starting the Backend (FastAPI)
 
-To start the FastAPI backend server for development:
+To start the FastAPI backend server and PostgreSQL database for development:
 
 1. Navigate to the backend directory:
    ```
@@ -47,7 +47,7 @@ To start the FastAPI backend server for development:
    ./dev.sh
    ```
 
-The server will start on `http://localhost:8000` with hot reloading enabled.
+The script will automatically start PostgreSQL (if not already running) and then start the FastAPI server on `http://localhost:8000` with hot reloading enabled. The script checks PostgreSQL status to avoid unnecessary delays when the database is already running.
 
 ### Starting the Frontend (React)
 
