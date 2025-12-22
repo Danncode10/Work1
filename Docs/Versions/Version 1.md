@@ -1,7 +1,7 @@
 # Version 1.0.0 (Foundation — Make it Work)
 
 ## Summary
-Version 1.0.0 of the Natural Health Website System focuses on establishing the core web platform. It includes essential features such as user authentication (optional for browsing), a searchable list of natural ingredients with detailed information (proven benefits, nutrition facts, risks & warnings, usage recommendations), basic error handling, and accessibility features. The system will be deployed on AWS with basic monitoring to ensure a stable foundation for future enhancements.
+Version 1.0.0 of NutriFriendly focuses on establishing the core web platform. It includes essential features such as user authentication (optional for browsing), a searchable list of natural ingredients with detailed information (proven benefits, nutrition facts, risks & warnings, usage recommendations), basic error handling, and accessibility features. The system will be deployed on AWS with basic monitoring to ensure a stable foundation for future enhancements.
 
 ## Medical & Educational Disclaimer
 This platform provides educational information about natural ingredients and their general uses. It is not intended to diagnose, treat, cure, or prevent any disease. Users should consult qualified healthcare professionals for personalized medical advice, diagnosis, or treatment. The information presented is for informational purposes only and should not replace professional medical judgment.
@@ -160,7 +160,14 @@ Version 1.0.0 does NOT include:
   - [x] Ensure browsing routes remain accessible without login
   - [x] Add authentication checks for protected routes if needed
 
-  4.2.6 Sub Stage: **Establish UI Design System**
+  4.2.6 Sub Stage: **Suggest a Name for this project 📍**
+  - [x] Use A.I. to generate name for this project
+  - [x] Look for available domain names in GoDaddy
+  - [x] Update the github name and folder name of root
+  - [x] Update the documentation for no conflict
+  - [x] Update UI
+
+  4.2.7 Sub Stage: **Establish UI Design System**
   - [ ] Define color palette for consistent branding
   - [ ] Set up typography scale and font hierarchy
   - [ ] Create spacing and sizing guidelines

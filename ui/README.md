@@ -1,4 +1,4 @@
-# Natural Health Website System - Frontend
+# NutriFriendly - Frontend
 
 The frontend component of the Natural Health Website System, an educational platform for browsing and learning about natural ingredients. Built with React and modern web technologies, this application provides users with searchable access to detailed information about natural ingredients including benefits, nutrition facts, risks, warnings, dosage recommendations, and scientific references.
 

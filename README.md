@@ -1,7 +1,7 @@
-# Work1: Natural Health Website System
+# NutriFriendly
 
 ## Project Summary
-Work1 is a comprehensive web application project that demonstrates building a production-ready, full-stack health and wellness platform. The system provides users with a searchable database of natural ingredients, complete with detailed information on benefits, nutrition facts, risks, warnings, and usage recommendations. Featuring a modern tech stack (FastAPI, React, PostgreSQL) and cloud deployment (AWS), this project serves as both a functional application blueprint and a comprehensive learning resource for software development methodologies.
+NutriFriendly is a comprehensive web application project that demonstrates building a production-ready, full-stack health and wellness platform. The system provides users with a searchable database of natural ingredients, complete with detailed information on benefits, nutrition facts, risks, warnings, and usage recommendations. Featuring a modern tech stack (FastAPI, React, PostgreSQL) and cloud deployment (AWS), this project serves as both a functional application blueprint and a comprehensive learning resource for software development methodologies.
 
 **Current Focus**: Version 1.0.0 implementation using the Dann Framework - a question-first, solo-developer-friendly approach to software development that emphasizes thorough planning, documentation, and iterative improvement.
 

@@ -30,7 +30,7 @@ function MainLayout({ children }) {
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
                 <Link to="/" className="text-xl font-bold text-gray-900">
-                  Natural Health
+                  NutriFriendly
                 </Link>
               </div>
               <div className="hidden sm:ml-6 sm:block">
@@ -81,7 +81,7 @@ function MainLayout({ children }) {
       <footer className="bg-white shadow-sm mt-auto">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-4">
           <div className="text-center text-gray-500">
-            © 2025 Natural Health Website. Educational information only.
+            © 2025 NutriFriendly. Educational information only.
           </div>
         </div>
       </footer>
