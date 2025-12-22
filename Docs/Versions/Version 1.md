@@ -168,10 +168,10 @@ Version 1.0.0 does NOT include:
   - [x] Update UI
 
   4.2.7 Sub Stage: **Establish UI Design System**
-  - [ ] Define color palette for consistent branding
-  - [ ] Set up typography scale and font hierarchy
-  - [ ] Create spacing and sizing guidelines
-  - [ ] Establish component styling standards
+  - [x] Define color palette for consistent branding
+  - [x] Set up typography scale and font hierarchy
+  - [x] Create spacing and sizing guidelines
+  - [x] Establish component styling standards
 
 4.3 Sub Stage: **Implement Redux State Management**
 - Configure Redux Toolkit by creating the store configuration in 'src/store/index.js'.

@@ -1,3 +1,65 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Base typography styles */
+@layer base {
+  html {
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  }
+
+  h1 {
+    @apply text-5xl font-bold text-text-primary leading-tight;
+  }
+
+  h2 {
+    @apply text-4xl font-bold text-text-primary leading-tight;
+  }
+
+  h3 {
+    @apply text-3xl font-semibold text-text-primary leading-snug;
+  }
+
+  h4 {
+    @apply text-2xl font-semibold text-text-primary leading-snug;
+  }
+
+  h5 {
+    @apply text-xl font-semibold text-text-primary leading-snug;
+  }
+
+  h6 {
+    @apply text-lg font-semibold text-text-primary leading-snug;
+  }
+
+  p {
+    @apply text-base text-text-primary leading-relaxed;
+  }
+
+  body {
+    @apply bg-neutral text-text-primary;
+  }
+}
+
+/* Component styling standards */
+@layer components {
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply border border-secondary-500 text-secondary-500 hover:bg-secondary-50 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-ghost {
+    @apply text-primary-500 hover:bg-primary-50 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-6;
+  }
+
+  .input {
+    @apply border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  }
+}

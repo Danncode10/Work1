@@ -15,12 +15,12 @@ function classNames(...classes) {
 
 function MainLayout({ children }) {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-neutral">
       <Disclosure as="nav" className="bg-white shadow-sm">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-              <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+              <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-text-secondary hover:bg-primary-50 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open main menu</span>
                 <Bars3Icon aria-hidden="true" className="block h-6 w-6 group-data-[open]:hidden" />
@@ -29,7 +29,7 @@ function MainLayout({ children }) {
             </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex flex-shrink-0 items-center">
-                <Link to="/" className="text-xl font-bold text-gray-900">
+                <Link to="/" className="text-xl font-bold text-text-primary">
                   NutriFriendly
                 </Link>
               </div>
@@ -40,7 +40,7 @@ function MainLayout({ children }) {
                       key={item.name}
                       to={item.href}
                       className={classNames(
-                        item.current ? 'bg-indigo-100 text-indigo-700' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700',
+                        item.current ? 'bg-primary-100 text-primary-700' : 'text-text-secondary hover:bg-primary-50 hover:text-primary-600',
                         'rounded-md px-3 py-2 text-sm font-medium',
                       )}
                     >
@@ -61,7 +61,7 @@ function MainLayout({ children }) {
                 as={Link}
                 to={item.href}
                 className={classNames(
-                  item.current ? 'bg-indigo-100 text-indigo-700' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700',
+                  item.current ? 'bg-primary-100 text-primary-700' : 'text-text-secondary hover:bg-primary-50 hover:text-primary-600',
                   'block rounded-md px-3 py-2 text-base font-medium',
                 )}
               >
@@ -80,7 +80,7 @@ function MainLayout({ children }) {
 
       <footer className="bg-white shadow-sm mt-auto">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 py-4">
-          <div className="text-center text-gray-500">
+          <div className="text-center text-text-secondary">
             © 2025 NutriFriendly. Educational information only.
           </div>
         </div>
