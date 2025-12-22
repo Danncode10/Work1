@@ -192,10 +192,11 @@ Version 1.0.0 does NOT include:
   - [x] Integrated search bar.
 
   4.4.2 Sub Stage: **Design Search Bar Component**
-  - [ ] Build a search input with debounced input, Redux integration, and clear functionality.
+  - [x] Build a search input with debounced input, Redux integration, and clear functionality.
 
   4.4.3 Sub Stage: **Develop Ingredient Card Component**
-  - [ ] Create a card for list displays showing key info, hover effects, and navigation handlers.
+  - [x] Create a card for list displays showing name, hover effects, and navigation handlers.
+  - [x] When the ingredients is clicked, it will redirect to page to show more info
 
   4.4.4 Sub Stage: **Create Ingredient Detail Page Component**
   - [ ] Build a detailed page with header, benefits, nutrition, risks, dosage, and references sections.

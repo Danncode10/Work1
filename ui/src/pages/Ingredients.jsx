@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setQuery } from '../store/slices/filtersSlice';
 import { ingredientsApi } from '../services/api';
+import IngredientCard from '../components/IngredientCard';
 
 function Ingredients() {
   const [ingredients, setIngredients] = useState([]);
@@ -98,53 +98,7 @@ function Ingredients() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {ingredients.map((ingredient) => (
-            <div
-              key={ingredient.id}
-              className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
-            >
-              <div className="p-6">
-                <h2 className="text-xl font-semibold mb-3 text-gray-800">
-                  {ingredient.name}
-                </h2>
-
-                <div className="mb-4">
-                  <h3 className="text-sm font-medium text-green-700 mb-2">Benefits:</h3>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    {ingredient.benefits.slice(0, 3).map((benefit, index) => (
-                      <li key={index} className="flex items-start">
-                        <span className="text-green-500 mr-2">•</span>
-                        {benefit}
-                      </li>
-                    ))}
-                    {ingredient.benefits.length > 3 && (
-                      <li className="text-gray-500 italic">
-                        +{ingredient.benefits.length - 3} more benefits
-                      </li>
-                    )}
-                  </ul>
-                </div>
-
-                <div className="mb-4">
-                  <h3 className="text-sm font-medium text-blue-700 mb-2">Nutrition Facts:</h3>
-                  <div className="text-sm text-gray-600">
-                    <p>Calories: {ingredient.calories || 'N/A'}</p>
-                    {ingredient.nutrition_facts && Object.keys(ingredient.nutrition_facts).length > 0 && (
-                      <p>
-                        Key nutrients: {Object.keys(ingredient.nutrition_facts).slice(0, 2).join(', ')}
-                        {Object.keys(ingredient.nutrition_facts).length > 2 && ' + more'}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                <Link
-                  to={`/ingredients/${ingredient.id}`}
-                  className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200 text-sm font-medium"
-                >
-                  View Details
-                </Link>
-              </div>
-            </div>
+            <IngredientCard key={ingredient.id} ingredient={ingredient} />
           ))}
         </div>
       )}
