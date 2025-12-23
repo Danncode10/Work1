@@ -7,6 +7,7 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [validationErrors, setValidationErrors] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loading, error } = useSelector((state) => state.auth);
@@ -21,10 +22,40 @@ function Register() {
     }
   };
 
-  const handleInputChange = (setter) => (e) => {
+  const validateField = (name, value) => {
+    const errors = { ...validationErrors };
+    if (name === 'email') {
+      if (!value) {
+        errors.email = 'Email is required';
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        errors.email = 'Please enter a valid email address';
+      } else {
+        delete errors.email;
+      }
+    } else if (name === 'password') {
+      if (!value) {
+        errors.password = 'Password is required';
+      } else if (value.length < 8) {
+        errors.password = 'Password must be at least 8 characters long';
+      } else {
+        delete errors.password;
+      }
+    }
+    setValidationErrors(errors);
+  };
+
+  const handleInputChange = (name, setter) => (e) => {
     setter(e.target.value);
     if (error) {
       dispatch(clearAuthError()); // Clear error when user starts typing
+    }
+    // Clear validation error for this field
+    if (validationErrors[name]) {
+      setValidationErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
     }
   };
 
@@ -48,10 +79,12 @@ function Register() {
               type="email"
               required
               value={email}
-              onChange={handleInputChange(setEmail)}
+              onChange={handleInputChange('email', setEmail)}
+              onBlur={(e) => validateField('email', e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
               placeholder="Enter your email"
             />
+            {validationErrors.email && <div className="text-error text-sm mt-1">{validationErrors.email}</div>}
           </div>
 
           <div>
@@ -64,7 +97,8 @@ function Register() {
                 type={showPassword ? 'text' : 'password'}
                 required
                 value={password}
-                onChange={handleInputChange(setPassword)}
+                onChange={handleInputChange('password', setPassword)}
+                onBlur={(e) => validateField('password', e.target.value)}
                 className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                 placeholder="Create a password"
                 minLength={8}
@@ -86,6 +120,7 @@ function Register() {
                 )}
               </button>
             </div>
+            {validationErrors.password && <div className="text-error text-sm mt-1">{validationErrors.password}</div>}
           </div>
 
           {error && (
@@ -96,7 +131,7 @@ function Register() {
 
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || Object.keys(validationErrors).length > 0}
             className="w-full bg-secondary-600 text-white py-3 px-4 rounded-md hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {loading ? 'Creating account...' : 'Create Account'}

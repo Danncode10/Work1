@@ -9,7 +9,7 @@ export const fetchIngredients = createAsyncThunk(
       const response = await ingredientsApi.getIngredients(params);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data || 'Failed to fetch ingredients');
+      return rejectWithValue(error.response?.data || error.detail || 'Failed to fetch ingredients');
     }
   }
 );
@@ -21,7 +21,7 @@ export const fetchIngredientById = createAsyncThunk(
       const response = await ingredientsApi.getIngredient(id);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data || 'Failed to fetch ingredient');
+      return rejectWithValue(error.response?.data || error.detail || 'Failed to fetch ingredient');
     }
   }
 );
@@ -33,7 +33,7 @@ export const searchIngredients = createAsyncThunk(
       const response = await ingredientsApi.searchIngredients(query);
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.response?.data || 'Failed to search ingredients');
+      return rejectWithValue(error.response?.data || error.detail || 'Failed to search ingredients');
     }
   }
 );

@@ -13,7 +13,7 @@ export const loginUser = createAsyncThunk(
       // For now, set user to null since backend doesn't return user info
       return { token: access_token, user: null };
     } catch (error) {
-      return rejectWithValue(error.response?.data || 'Login failed');
+      return rejectWithValue(error.response?.data || error.detail || 'Login failed');
     }
   }
 );
@@ -27,7 +27,7 @@ export const registerUser = createAsyncThunk(
       // User needs to login after registration
       return { token: null, user: null };
     } catch (error) {
-      return rejectWithValue(error.response?.data || 'Registration failed');
+      return rejectWithValue(error.response?.data || error.detail || 'Registration failed');
     }
   }
 );

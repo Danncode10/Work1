@@ -27,12 +27,25 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    if (!error.response) {
+      // Network error
+      return Promise.reject({ detail: 'Network error. Please check your internet connection and try again.' });
+    }
+    const status = error.response.status;
+    let message = error.response.data?.detail || error.response.data?.message || 'An error occurred';
+    if (status === 400) {
+      message = 'Bad request. Please check your input.';
+    } else if (status === 401) {
       // Handle unauthorized access
       localStorage.removeItem('authToken');
       window.location.href = '/login';
+      message = 'Unauthorized. Please log in again.';
+    } else if (status === 404) {
+      message = 'Resource not found.';
+    } else if (status === 500) {
+      message = 'Server error. Please try again later.';
     }
-    return Promise.reject(error);
+    return Promise.reject({ detail: message });
   }
 );
 
