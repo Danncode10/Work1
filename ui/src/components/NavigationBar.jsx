@@ -1,19 +1,35 @@
-import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setQuery } from '../store/slices/filtersSlice'
 
 function NavigationBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [searchInput, setSearchInput] = useState('')
   const dispatch = useDispatch()
   const { query } = useSelector((state) => state.filters)
   const location = useLocation()
+  const navigate = useNavigate()
 
   const handleSearchChange = (e) => {
-    dispatch(setQuery(e.target.value))
+    setSearchInput(e.target.value)
+  }
+
+  const handleSearchSubmit = () => {
+    if (searchInput.trim()) {
+      dispatch(setQuery(searchInput.trim()))
+      navigate('/ingredients')
+    }
+  }
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearchSubmit()
+    }
   }
 
   const handleClearSearch = () => {
+    setSearchInput('')
     dispatch(setQuery(''))
   }
 
@@ -67,23 +83,34 @@ function NavigationBar() {
           </div>
           {location.pathname !== '/ingredients' && (
             <div className="hidden sm:flex absolute inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <div className="relative max-w-xs w-full">
-                <input
-                  type="text"
-                  className="w-full pl-3 pr-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                  placeholder="Search natural ingredients..."
-                  value={query}
-                  onChange={handleSearchChange}
-                />
-                {query && (
-                  <button
-                    type="button"
-                    className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 hover:text-gray-700 text-lg"
-                    onClick={handleClearSearch}
-                  >
-                    ×
-                  </button>
-                )}
+              <div className="flex space-x-2">
+                <div className="relative max-w-xs w-full">
+                  <input
+                    type="text"
+                    className="w-full pl-3 pr-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    placeholder="Search natural ingredients..."
+                    value={searchInput}
+                    onChange={handleSearchChange}
+                    onKeyPress={handleKeyPress}
+                  />
+                  {searchInput && (
+                    <button
+                      type="button"
+                      className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 hover:text-gray-700 text-lg"
+                      onClick={handleClearSearch}
+                    >
+                      ×
+                    </button>
+                  )}
+                </div>
+                <button
+                  onClick={handleSearchSubmit}
+                  className="p-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </button>
               </div>
             </div>
           )}

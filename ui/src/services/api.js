@@ -50,7 +50,7 @@ export const ingredientsApi = {
 
   // Search ingredients
   searchIngredients: (query) => {
-    return api.post('/search', { query });
+    return api.post('/ingredients/search', { query });
   },
 };
 

@@ -1,13 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setQuery } from '../store/slices/filtersSlice';
-import { fetchIngredients } from '../store/slices/ingredientsSlice';
+import { fetchIngredients, searchIngredients } from '../store/slices/ingredientsSlice';
 import IngredientCard from '../components/IngredientCard';
 
 function Ingredients() {
   const dispatch = useDispatch();
   const { query } = useSelector((state) => state.filters);
-  const { list: ingredients, loading, error } = useSelector((state) => state.ingredients);
+  const { list: ingredients, searchResults, initialLoading, searchLoading, error } = useSelector((state) => state.ingredients);
+  const displayIngredients = query ? searchResults : ingredients;
+  const debounceRef = useRef(null);
 
   const handleSearchChange = (e) => {
     dispatch(setQuery(e.target.value));
@@ -17,11 +19,33 @@ function Ingredients() {
     dispatch(setQuery(''));
   };
 
+  const performSearch = useCallback((searchQuery) => {
+    if (searchQuery.trim()) {
+      dispatch(searchIngredients(searchQuery));
+    } else {
+      dispatch(fetchIngredients());
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+    }
+    debounceRef.current = setTimeout(() => {
+      performSearch(query);
+    }, 300);
+    return () => {
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current);
+      }
+    };
+  }, [query, performSearch]);
+
   useEffect(() => {
     dispatch(fetchIngredients());
   }, [dispatch]);
 
-  if (loading) {
+  if (initialLoading) {
     return (
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8 text-center">Natural Health Ingredients</h1>
@@ -55,34 +79,48 @@ function Ingredients() {
       <h1 className="text-3xl font-bold mb-4 text-center">Natural Health Ingredients</h1>
       <div className="mb-8">
         <div className="max-w-md mx-auto">
-          <div className="relative">
-            <input
-              type="text"
-              className="w-full pl-3 pr-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-              placeholder="Search natural ingredients..."
-              value={query}
-              onChange={handleSearchChange}
-            />
-            {query && (
-              <button
-                type="button"
-                className="absolute inset-y-0 right-0 flex items-center pr-3 text-text-secondary hover:text-text-primary"
-                onClick={handleClearSearch}
-              >
-                ×
-              </button>
-            )}
+          <div className="flex space-x-2">
+            <div className="relative flex-1">
+              <input
+                type="text"
+                className="w-full pl-3 pr-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                placeholder="Search natural ingredients..."
+                value={query}
+                onChange={handleSearchChange}
+              />
+              {query && (
+                <button
+                  type="button"
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-text-secondary hover:text-text-primary"
+                  onClick={handleClearSearch}
+                >
+                  ×
+                </button>
+              )}
+            </div>
+            <button
+              onClick={() => performSearch(query)}
+              className="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+            >
+              Search
+            </button>
           </div>
+          {searchLoading && (
+            <div className="text-center mt-4">
+              <div className="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-primary-600"></div>
+              <span className="ml-2 text-sm text-text-secondary">Searching...</span>
+            </div>
+          )}
         </div>
       </div>
 
-      {ingredients.length === 0 ? (
+      {displayIngredients.length === 0 && !searchLoading ? (
         <div className="text-center text-text-secondary">
-          <p>No ingredients found. Check back later!</p>
+          <p>{query ? 'No search results found.' : 'No ingredients found. Check back later!'}</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {ingredients.map((ingredient) => (
+          {displayIngredients.map((ingredient) => (
             <IngredientCard key={ingredient.id} ingredient={ingredient} />
           ))}
         </div>

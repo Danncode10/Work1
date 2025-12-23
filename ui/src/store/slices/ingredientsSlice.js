@@ -44,7 +44,8 @@ const ingredientsSlice = createSlice({
     list: [],
     selectedIngredient: null,
     searchResults: [],
-    loading: false,
+    initialLoading: false,
+    searchLoading: false,
     error: null,
     totalCount: 0,
     currentPage: 1,
@@ -65,17 +66,17 @@ const ingredientsSlice = createSlice({
     builder
       // Fetch ingredients
       .addCase(fetchIngredients.pending, (state) => {
-        state.loading = true;
+        state.initialLoading = true;
         state.error = null;
       })
       .addCase(fetchIngredients.fulfilled, (state, action) => {
-        state.loading = false;
+        state.initialLoading = false;
         state.list = action.payload.ingredients || action.payload;
         state.totalCount = action.payload.total || action.payload.length;
         state.totalPages = action.payload.totalPages || 1;
       })
       .addCase(fetchIngredients.rejected, (state, action) => {
-        state.loading = false;
+        state.initialLoading = false;
         state.error = action.payload;
       })
       // Fetch ingredient by ID
@@ -93,15 +94,15 @@ const ingredientsSlice = createSlice({
       })
       // Search ingredients
       .addCase(searchIngredients.pending, (state) => {
-        state.loading = true;
+        state.searchLoading = true;
         state.error = null;
       })
       .addCase(searchIngredients.fulfilled, (state, action) => {
-        state.loading = false;
+        state.searchLoading = false;
         state.searchResults = action.payload.ingredients || action.payload;
       })
       .addCase(searchIngredients.rejected, (state, action) => {
-        state.loading = false;
+        state.searchLoading = false;
         state.error = action.payload;
       });
   },

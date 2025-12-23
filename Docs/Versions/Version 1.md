@@ -222,9 +222,9 @@ Version 1.0.0 does NOT include:
   - [x] Use ErrorPage component for consistent error UI in IngredientDetail
 
   4.5.3 Sub Stage: **Implement search functionality in Ingredients.jsx**
-  - [ ] Use Redux thunk (searchIngredients) triggered by query changes instead of query-only state
-  - [ ] Dispatch searchIngredients(query) when user inputs search term
-  - [ ] Display search results from Redux state, integrating loading and error handling
+  - [x] Use Redux thunk (searchIngredients) triggered by query changes instead of query-only state
+  - [x] Dispatch searchIngredients(query) when user inputs search term
+  - [x] Display search results from Redux state, integrating loading and error handling
 
   4.5.4 Sub Stage: **Update Login.jsx and Register.jsx to use Redux thunks**
   - [ ] Implement login form in Login.jsx using dispatch(loginUser(credentials))

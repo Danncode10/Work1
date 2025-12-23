@@ -15,10 +15,7 @@ async def search_ingredients(db: AsyncSession, query: str, limit: int = 50) -> L
     if not query.strip():
         return await get_ingredients(db, limit=limit)
 
-    search_query = func.to_tsquery('english', query)
-    search_vector = func.to_tsvector('english', func.concat(Ingredient.name, ' ', func.array_to_string(Ingredient.benefits, ' ')))
-    rank = func.ts_rank(search_vector, search_query)
-
-    stmt = select(Ingredient).where(rank > 0).order_by(rank.desc()).limit(limit)
+    # Use ILIKE for case-insensitive partial name matching
+    stmt = select(Ingredient).where(Ingredient.name.ilike(f'%{query}%')).limit(limit)
     result = await db.execute(stmt)
     return result.scalars().all()
