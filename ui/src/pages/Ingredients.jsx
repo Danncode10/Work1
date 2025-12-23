@@ -38,7 +38,7 @@ function Ingredients() {
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8 text-center">Natural Health Ingredients</h1>
         <div className="text-center text-error">
-          <p>{error}</p>
+          <p>{typeof error === 'object' ? error.detail || 'Failed to load ingredients. Please try again later.' : error}</p>
           <button
             onClick={() => dispatch(fetchIngredients())}
             className="mt-4 bg-primary-600 text-white px-4 py-2 rounded hover:bg-primary-700"

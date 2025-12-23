@@ -1,29 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { ingredientsApi } from '../services/api'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchIngredientById } from '../store/slices/ingredientsSlice'
+import ErrorPage from '../components/ErrorPage'
 
 function IngredientDetail() {
   const { id } = useParams()
-  const [ingredient, setIngredient] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const dispatch = useDispatch()
+  const { selectedIngredient: ingredient, loading, error } = useSelector((state) => state.ingredients)
 
   useEffect(() => {
-    fetchIngredient()
-  }, [id])
-
-  const fetchIngredient = async () => {
-    try {
-      setLoading(true)
-      const response = await ingredientsApi.getIngredient(id)
-      setIngredient(response.data)
-    } catch (err) {
-      setError('Failed to load ingredient details. Please try again later.')
-      console.error('Error fetching ingredient:', err)
-    } finally {
-      setLoading(false)
-    }
-  }
+    dispatch(fetchIngredientById(id))
+  }, [dispatch, id])
 
   if (loading) {
     return (
@@ -38,15 +26,13 @@ function IngredientDetail() {
 
   if (error) {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center text-error">
-          <p>{error}</p>
-          <Link to="/ingredients" className="mt-4 inline-block bg-primary-600 text-white px-4 py-2 rounded hover:bg-primary-700 transition-colors">
-            Back to Ingredients
-          </Link>
-        </div>
-      </div>
-    )
+      <ErrorPage
+        message={typeof error === 'object' ? error.detail || 'Failed to load ingredient details. Please try again later.' : error}
+        onRetry={() => dispatch(fetchIngredientById(id))}
+        backTo="/ingredients"
+        backToLabel="Browse Ingredients"
+      />
+    );
   }
 
   if (!ingredient) {

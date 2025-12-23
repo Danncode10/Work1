@@ -214,10 +214,12 @@ Version 1.0.0 does NOT include:
   - [x] Integrate loading and error states from Redux into component rendering
   - [x] Update UI to display Redux-managed ingredient list and states
 
-  4.5.2 Sub Stage: **Update IngredientDetail.jsx to use Redux thunk (fetchIngredientById)**
-  - [ ] Replace direct API calls with dispatch(fetchIngredientById(id)) from Redux thunk
-  - [ ] Integrate loading and error states from Redux into component rendering
-  - [ ] Update UI to display Redux-managed ingredient details and states
+  4.5.2 Sub Stage: **Redux Integration and ErrorPage Component**
+  - [x] Create ErrorPage.jsx reusable component for error states
+  - [x] Update IngredientDetail.jsx to use Redux thunk (fetchIngredientById) instead of direct API calls
+  - [x] Integrate loading and error states from Redux into IngredientDetail component
+  - [x] Fix error message handling in Ingredients.jsx for object responses
+  - [x] Use ErrorPage component for consistent error UI in IngredientDetail
 
   4.5.3 Sub Stage: **Implement search functionality in Ingredients.jsx**
   - [ ] Use Redux thunk (searchIngredients) triggered by query changes instead of query-only state

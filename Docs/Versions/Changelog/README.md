@@ -26,7 +26,7 @@ Each changelog file follows this format:
 
 #### Header
 - **Title**: Version and stage description
-- **Date**: When changes were made (optional)
+- **Date**: Always add the current date
 
 #### What We Did Section
 - **Environment Setup**: Tools installed, environment configured
