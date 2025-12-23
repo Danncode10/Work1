@@ -208,19 +208,39 @@ Version 1.0.0 does NOT include:
   - [x] Verify all components function correctly, integrate with Redux, and ensure responsiveness.
 
 4.5 Sub Stage: **Integrate with Backend APIs**
-- Create service functions in 'src/services/api.js' using Axios:
-  - Base configuration with interceptor for adding authentication tokens
-  - Error handling for API responses (401 unauthorized, 404 not found, etc.)
-- Implement data fetching functions:
-  - `getIngredientsList()` for paginated ingredient fetching
-  - `searchIngredients(query)` for search functionality
-  - `getIngredientById(id)` for detailed ingredient information
-  - `loginUser()` and `registerUser()` for authentication (optional)
-- Connect React components to API functions through Redux thunks:
-  - Dispatch actions to update state when API calls complete
-  - Handle loading states to provide user feedback
-  - Implement error handling for failed requests
-- Add error boundaries to catch and display JavaScript errors gracefully
+
+  4.5.1 Sub Stage: **Update Ingredients.jsx to use Redux thunk (fetchIngredients)**
+  - [x] Replace direct API calls with dispatch(fetchIngredients()) from Redux thunk
+  - [x] Integrate loading and error states from Redux into component rendering
+  - [x] Update UI to display Redux-managed ingredient list and states
+
+  4.5.2 Sub Stage: **Update IngredientDetail.jsx to use Redux thunk (fetchIngredientById)**
+  - [ ] Replace direct API calls with dispatch(fetchIngredientById(id)) from Redux thunk
+  - [ ] Integrate loading and error states from Redux into component rendering
+  - [ ] Update UI to display Redux-managed ingredient details and states
+
+  4.5.3 Sub Stage: **Implement search functionality in Ingredients.jsx**
+  - [ ] Use Redux thunk (searchIngredients) triggered by query changes instead of query-only state
+  - [ ] Dispatch searchIngredients(query) when user inputs search term
+  - [ ] Display search results from Redux state, integrating loading and error handling
+
+  4.5.4 Sub Stage: **Update Login.jsx and Register.jsx to use Redux thunks**
+  - [ ] Implement login form in Login.jsx using dispatch(loginUser(credentials))
+  - [ ] Implement register form in Register.jsx using dispatch(registerUser(userData))
+  - [ ] Integrate loading and error states from Redux into both components
+  - [ ] Handle authentication success (e.g., redirect after login/register)
+
+  4.5.5 Sub Stage: **Create and integrate ErrorBoundary component**
+  - [ ] Create ErrorBoundary.jsx component to catch JavaScript errors
+  - [ ] Wrap main app components with ErrorBoundary for graceful error display
+  - [ ] Ensure error boundary resets or allows recovery from errors
+
+  4.5.6 Sub Stage: **Test Stage**
+  - [ ] Test API integration and Redux state updates for ingredients fetching and details
+  - [ ] Test search functionality with Redux thunks and state management
+  - [ ] Test authentication flows with login/register forms and error handling
+  - [ ] Test error boundary by simulating JavaScript errors
+  - [ ] Verify loading states and error messages display correctly across components
 
 4.6 Sub Stage: **Implement User Interaction & Data Display Features**
 - Develop interactive search functionality with real-time filtering:

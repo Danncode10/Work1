@@ -1,15 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setQuery } from '../store/slices/filtersSlice';
-import { ingredientsApi } from '../services/api';
+import { fetchIngredients } from '../store/slices/ingredientsSlice';
 import IngredientCard from '../components/IngredientCard';
 
 function Ingredients() {
-  const [ingredients, setIngredients] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const { query } = useSelector((state) => state.filters);
+  const { list: ingredients, loading, error } = useSelector((state) => state.ingredients);
 
   const handleSearchChange = (e) => {
     dispatch(setQuery(e.target.value));
@@ -20,29 +18,16 @@ function Ingredients() {
   };
 
   useEffect(() => {
-    fetchIngredients();
-  }, []);
-
-  const fetchIngredients = async () => {
-    try {
-      setLoading(true);
-      const response = await ingredientsApi.getIngredients();
-      setIngredients(response.data);
-    } catch (err) {
-      setError('Failed to load ingredients. Please try again later.');
-      console.error('Error fetching ingredients:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
+    dispatch(fetchIngredients());
+  }, [dispatch]);
 
   if (loading) {
     return (
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8 text-center">Natural Health Ingredients</h1>
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-          <p className="mt-2 text-gray-600">Loading ingredients...</p>
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+          <p className="mt-2 text-text-secondary">Loading ingredients...</p>
         </div>
       </div>
     );
@@ -52,11 +37,11 @@ function Ingredients() {
     return (
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8 text-center">Natural Health Ingredients</h1>
-        <div className="text-center text-red-600">
+        <div className="text-center text-error">
           <p>{error}</p>
           <button
-            onClick={fetchIngredients}
-            className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            onClick={() => dispatch(fetchIngredients())}
+            className="mt-4 bg-primary-600 text-white px-4 py-2 rounded hover:bg-primary-700"
           >
             Try Again
           </button>
@@ -81,7 +66,7 @@ function Ingredients() {
             {query && (
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-600"
+                className="absolute inset-y-0 right-0 flex items-center pr-3 text-text-secondary hover:text-text-primary"
                 onClick={handleClearSearch}
               >
                 ×
@@ -92,7 +77,7 @@ function Ingredients() {
       </div>
 
       {ingredients.length === 0 ? (
-        <div className="text-center text-gray-600">
+        <div className="text-center text-text-secondary">
           <p>No ingredients found. Check back later!</p>
         </div>
       ) : (

@@ -80,3 +80,5 @@ graph TD
 - **Change Tracking**: Detailed record of modifications and rationale
 - **Debugging Aid**: Historical context for troubleshooting
 - **Documentation Maintenance**: Structured approach to keeping docs current
+
+## How did we Test if the Code works: 
