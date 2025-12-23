@@ -226,7 +226,7 @@ Version 1.0.0 does NOT include:
   - [x] Dispatch searchIngredients(query) when user inputs search term
   - [x] Display search results from Redux state, integrating loading and error handling
 
-  4.5.4 Sub Stage: **Update Login.jsx and Register.jsx to use Redux thunks**
+  4.5.4 ✅ Sub Stage: **Update Login.jsx and Register.jsx to use Redux thunks**
   - [x] Implement login form in Login.jsx using dispatch(loginUser(credentials))
   - [x] Implement register form in Register.jsx using dispatch(registerUser(userData))
   - [x] Integrate loading and error states from Redux into both components
@@ -240,37 +240,12 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 
 ---
 
-  4.5.5 Sub Stage: **Create and integrate ErrorBoundary component**
+  4.5.5 ✅ Sub Stage: **Create and integrate ErrorBoundary component**
   - [x] Create ErrorBoundary.jsx using React's error boundary pattern
   - [x] Wrap App.jsx with ErrorBoundary for global error handling
   - [x] Test error boundary functionality
 
-  4.5.6 Sub Stage: **Test Stage**
-  - [ ] Test API integration and Redux state updates for ingredients fetching and details
-  - [ ] Test search functionality with Redux thunks and state management
-  - [ ] Test authentication flows with login/register forms and error handling
-  - [ ] Test error boundary by simulating JavaScript errors
-  - [ ] Verify loading states and error messages display correctly across components
-
-4.6 Sub Stage: **Implement User Interaction & Data Display Features**
-- Develop interactive search functionality with real-time filtering:
-  - Connect search input to Redux state updates
-  - Trigger API searches with debouncing to prevent rate limiting
-  - Display filtered results using the Ingredient Card components
-- Implement detailed view navigation:
-  - Use React Router's `useNavigate` for programmatic navigation
-  - Pass ingredient data through state or query parameters if needed
-- Create authentication forms (optional):
-  - Login form with email/password fields
-  - Registration form with validation
-  - Form validation using libraries or custom validation functions
-- Add data visualization for nutrition facts:
-  - Use charts or tables for better data presentation
-  - Implement responsive design for different screen sizes
-- Ensure smooth user interactions:
-  - Loading states for all async operations
-  - Optimistic updates for better perceived performance
-  - Clear feedback for user actions (success messages, error handling)
+4.6 ✅ Skipped, no need for visualization
 
 4.7 Sub Stage: **Basic Error Handling, Accessibility & Testing**
 - Implement comprehensive error handling:
