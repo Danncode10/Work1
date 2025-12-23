@@ -234,18 +234,16 @@ Version 1.0.0 does NOT include:
   - [x] Add password visibility toggle buttons to both forms
   - [x] Implement error clearing on user input to improve UX
   - [x] Update authSlice thunks to handle backend API response formats
-  
-  4.5.5 Configure AWS Cognito User Pool for auto-confirmation of user accounts ⬆️
-  - [ ] Go to AWS Cognito Console → User Pools → Select your pool
-  - [ ] Under "Sign-up experience" → "Self-service sign-up" → Enable "Allow users to sign themselves up"
-  - [ ] Under "Sign-up experience" → "Auto-verified attributes" → Check "email"
-  - [ ] Under "Sign-up experience" → "Required attributes" → Ensure "email" is checked
-  - [ ]Save changes
+---  
+#### ⚠️ Note: 
+User accounts require manual confirmation by AWS administrator in Cognito console before login is allowed.
+
+---
 
   4.5.5 Sub Stage: **Create and integrate ErrorBoundary component**
-  - [ ] Create ErrorBoundary.jsx using React's error boundary pattern
-  - [ ] Wrap App.jsx with ErrorBoundary for global error handling
-  - [ ] Test error boundary functionality
+  - [x] Create ErrorBoundary.jsx using React's error boundary pattern
+  - [x] Wrap App.jsx with ErrorBoundary for global error handling
+  - [x] Test error boundary functionality
 
   4.5.6 Sub Stage: **Test Stage**
   - [ ] Test API integration and Redux state updates for ingredients fetching and details

@@ -10,21 +10,24 @@ import IngredientDetail from './pages/IngredientDetail'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import AuthRedirect from './components/AuthRedirect'
+import ErrorBoundary from './components/ErrorBoundary'
 
 function App() {
   return (
     <Provider store={store}>
-      <Router>
-        <MainLayout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/ingredients" element={<Ingredients />} />
-            <Route path="/ingredients/:id" element={<IngredientDetail />} />
-            <Route path="/login" element={<AuthRedirect><Login /></AuthRedirect>} />
-            <Route path="/register" element={<AuthRedirect><Register /></AuthRedirect>} />
-          </Routes>
-        </MainLayout>
-      </Router>
+      <ErrorBoundary>
+        <Router>
+          <MainLayout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/ingredients" element={<Ingredients />} />
+              <Route path="/ingredients/:id" element={<IngredientDetail />} />
+              <Route path="/login" element={<AuthRedirect><Login /></AuthRedirect>} />
+              <Route path="/register" element={<AuthRedirect><Register /></AuthRedirect>} />
+            </Routes>
+          </MainLayout>
+        </Router>
+      </ErrorBoundary>
     </Provider>
   )
 }
