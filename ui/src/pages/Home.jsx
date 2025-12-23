@@ -9,7 +9,7 @@ function Home() {
       </p>
       <Link
         to="/ingredients"
-        className="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors font-medium"
+        className="inline-block min-h-11 bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors font-medium"
       >
         Explore Ingredients
       </Link>

@@ -60,7 +60,7 @@ function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral via-primary-50 to-secondary-50 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-neutral via-primary-50 to-secondary-50 pt-20 pb-8 px-4 sm:flex sm:items-center sm:justify-center sm:pt-0 sm:pb-0">
       <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold bg-gradient-to-r from-primary-700 to-secondary-600 bg-clip-text text-transparent">
@@ -134,7 +134,7 @@ function Register() {
           <button
             type="submit"
             disabled={loading || Object.keys(validationErrors).length > 0}
-            className="w-full bg-secondary-600 text-white py-3 px-4 rounded-md hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full min-h-11 bg-secondary-600 text-white py-3 px-4 rounded-md hover:bg-secondary-700 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {loading ? 'Creating account...' : 'Create Account'}
           </button>

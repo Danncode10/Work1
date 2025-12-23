@@ -65,7 +65,7 @@ function Ingredients() {
           <p>{typeof error === 'object' ? error.detail || 'Failed to load ingredients. Please try again later.' : error}</p>
           <button
             onClick={() => dispatch(fetchIngredients())}
-            className="mt-4 bg-primary-600 text-white px-4 py-2 rounded hover:bg-primary-700"
+            className="mt-4 min-h-11 bg-primary-600 text-white px-4 py-2 rounded hover:bg-primary-700"
           >
             Try Again
           </button>
@@ -102,7 +102,7 @@ function Ingredients() {
             </div>
             <button
               onClick={() => performSearch(query)}
-              className="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              className="px-4 py-2 min-h-11 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
               aria-label="Submit search"
             >
               Search
