@@ -7,10 +7,11 @@ export const loginUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await authApi.login(credentials);
-      const { token, user } = response.data;
-      // Store token in localStorage
-      localStorage.setItem('authToken', token);
-      return { token, user };
+      const { access_token, id_token } = response.data;
+      // Store access token in localStorage
+      localStorage.setItem('authToken', access_token);
+      // For now, set user to null since backend doesn't return user info
+      return { token: access_token, user: null };
     } catch (error) {
       return rejectWithValue(error.response?.data || 'Login failed');
     }
@@ -22,10 +23,9 @@ export const registerUser = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const response = await authApi.register(userData);
-      const { token, user } = response.data;
-      // Store token in localStorage
-      localStorage.setItem('authToken', token);
-      return { token, user };
+      // Registration successful, but no token returned yet
+      // User needs to login after registration
+      return { token: null, user: null };
     } catch (error) {
       return rejectWithValue(error.response?.data || 'Registration failed');
     }

@@ -209,33 +209,43 @@ Version 1.0.0 does NOT include:
 
 4.5 Sub Stage: **Integrate with Backend APIs**
 
-  4.5.1 Sub Stage: **Update Ingredients.jsx to use Redux thunk (fetchIngredients)**
+  4.5.1 ✅ Sub Stage: **Update Ingredients.jsx to use Redux thunk (fetchIngredients)**
   - [x] Replace direct API calls with dispatch(fetchIngredients()) from Redux thunk
   - [x] Integrate loading and error states from Redux into component rendering
   - [x] Update UI to display Redux-managed ingredient list and states
 
-  4.5.2 Sub Stage: **Redux Integration and ErrorPage Component**
+  4.5.2 ✅ Sub Stage: **Redux Integration and ErrorPage Component**
   - [x] Create ErrorPage.jsx reusable component for error states
   - [x] Update IngredientDetail.jsx to use Redux thunk (fetchIngredientById) instead of direct API calls
   - [x] Integrate loading and error states from Redux into IngredientDetail component
   - [x] Fix error message handling in Ingredients.jsx for object responses
   - [x] Use ErrorPage component for consistent error UI in IngredientDetail
 
-  4.5.3 Sub Stage: **Implement search functionality in Ingredients.jsx**
+  4.5.3 ✅ Sub Stage: **Implement search functionality in Ingredients.jsx**
   - [x] Use Redux thunk (searchIngredients) triggered by query changes instead of query-only state
   - [x] Dispatch searchIngredients(query) when user inputs search term
   - [x] Display search results from Redux state, integrating loading and error handling
 
   4.5.4 Sub Stage: **Update Login.jsx and Register.jsx to use Redux thunks**
-  - [ ] Implement login form in Login.jsx using dispatch(loginUser(credentials))
-  - [ ] Implement register form in Register.jsx using dispatch(registerUser(userData))
-  - [ ] Integrate loading and error states from Redux into both components
-  - [ ] Handle authentication success (e.g., redirect after login/register)
+  - [x] Implement login form in Login.jsx using dispatch(loginUser(credentials))
+  - [x] Implement register form in Register.jsx using dispatch(registerUser(userData))
+  - [x] Integrate loading and error states from Redux into both components
+  - [x] Handle authentication success (e.g., redirect after login/register)
+  - [x] Add password visibility toggle buttons to both forms
+  - [x] Implement error clearing on user input to improve UX
+  - [x] Update authSlice thunks to handle backend API response formats
+  
+  4.5.5 Configure AWS Cognito User Pool for auto-confirmation of user accounts ⬆️
+  - [ ] Go to AWS Cognito Console → User Pools → Select your pool
+  - [ ] Under "Sign-up experience" → "Self-service sign-up" → Enable "Allow users to sign themselves up"
+  - [ ] Under "Sign-up experience" → "Auto-verified attributes" → Check "email"
+  - [ ] Under "Sign-up experience" → "Required attributes" → Ensure "email" is checked
+  - [ ]Save changes
 
   4.5.5 Sub Stage: **Create and integrate ErrorBoundary component**
-  - [ ] Create ErrorBoundary.jsx component to catch JavaScript errors
-  - [ ] Wrap main app components with ErrorBoundary for graceful error display
-  - [ ] Ensure error boundary resets or allows recovery from errors
+  - [ ] Create ErrorBoundary.jsx using React's error boundary pattern
+  - [ ] Wrap App.jsx with ErrorBoundary for global error handling
+  - [ ] Test error boundary functionality
 
   4.5.6 Sub Stage: **Test Stage**
   - [ ] Test API integration and Redux state updates for ingredients fetching and details
