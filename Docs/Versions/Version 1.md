@@ -273,12 +273,12 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
   - [x] Ensure touch-friendly button sizes and spacing
   - [x] Test
 
-  4.7.4 Sub Stage: **Implement basic automated testing**
-  - [ ] Unit tests for Redux slices and utility functions
-  - [ ] Component tests using React Testing Library
-  - [ ] End-to-end tests for critical user flows
-  - [ ] (Advanced testing suites, such as full CI/CD pipelines or load testing, are Optional / Post-V1)
-  - [ ] Test
+  4.7.4 ✅ Sub Stage: **Implement basic automated testing** (📖 Still need to review this part)
+  - [x] Unit tests for Redux slices and utility functions
+  - [x] Component tests using React Testing Library
+  - [x] End-to-end tests for critical user flows
+  - [x] (Advanced testing suites, such as full CI/CD pipelines or load testing, are Optional / Post-V1)
+  - [x] Test
 
 ### **Stage 5: Deployment & Operations (AWS)**
 
