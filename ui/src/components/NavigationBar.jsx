@@ -92,12 +92,14 @@ function NavigationBar() {
                     value={searchInput}
                     onChange={handleSearchChange}
                     onKeyPress={handleKeyPress}
+                    aria-label="Search natural ingredients"
                   />
                   {searchInput && (
                     <button
                       type="button"
                       className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 hover:text-gray-700 text-lg"
                       onClick={handleClearSearch}
+                      aria-label="Clear search input"
                     >
                       ×
                     </button>
@@ -106,8 +108,9 @@ function NavigationBar() {
                 <button
                   onClick={handleSearchSubmit}
                   className="p-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                  aria-label="Submit search"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
                 </button>
@@ -127,6 +130,7 @@ function NavigationBar() {
                 placeholder="Search natural ingredients..."
                 value={query}
                 onChange={handleSearchChange}
+                aria-label="Search natural ingredients"
               />
               {query && (
                 <button

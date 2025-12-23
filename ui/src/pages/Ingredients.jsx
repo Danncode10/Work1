@@ -87,12 +87,14 @@ function Ingredients() {
                 placeholder="Search natural ingredients..."
                 value={query}
                 onChange={handleSearchChange}
+                aria-label="Search natural ingredients"
               />
               {query && (
                 <button
                   type="button"
                   className="absolute inset-y-0 right-0 flex items-center pr-3 text-text-secondary hover:text-text-primary"
                   onClick={handleClearSearch}
+                  aria-label="Clear search"
                 >
                   ×
                 </button>
@@ -101,6 +103,7 @@ function Ingredients() {
             <button
               onClick={() => performSearch(query)}
               className="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              aria-label="Submit search"
             >
               Search
             </button>

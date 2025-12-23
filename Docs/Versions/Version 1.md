@@ -260,11 +260,11 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
   - [x] Test
 
   4.7.2 Sub Stage: **Ensure accessibility compliance**
-  - [ ] Use semantic HTML elements (<header>, <main>, <section>, etc.)
-  - [ ] Add ARIA labels and roles where necessary
-  - [ ] Implement keyboard navigation (tab order, Enter/Space key handling)
-  - [ ] Maintain sufficient color contrast ratios
-  - [ ] Support screen readers with proper alt text and labeling
+  - [x] Use semantic HTML elements (<header>, <main>, <section>, etc.)
+  - [x] Add ARIA labels and roles where necessary
+  - [x] Implement keyboard navigation (tab order, Enter/Space key handling)
+  - [x] Maintain sufficient color contrast ratios
+  - [x] Support screen readers with proper alt text and labeling
   - [ ] Test
 
   4.7.3 Sub Stage: **Verify responsive design across all device sizes**

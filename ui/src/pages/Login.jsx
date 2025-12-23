@@ -80,8 +80,9 @@ function Login() {
               onBlur={(e) => validateField('email', e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
               placeholder="Enter your email"
+              aria-describedby={validationErrors.email ? "email-error" : undefined}
             />
-            {validationErrors.email && <div className="text-error text-sm mt-1">{validationErrors.email}</div>}
+            {validationErrors.email && <div id="email-error" className="text-error text-sm mt-1">{validationErrors.email}</div>}
           </div>
 
           <div>
@@ -98,6 +99,7 @@ function Login() {
                 onBlur={(e) => validateField('password', e.target.value)}
                 className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                 placeholder="Enter your password"
+                aria-describedby={validationErrors.password ? "password-error" : undefined}
               />
               <button
                 type="button"
@@ -116,7 +118,7 @@ function Login() {
                 )}
               </button>
             </div>
-            {validationErrors.password && <div className="text-error text-sm mt-1">{validationErrors.password}</div>}
+            {validationErrors.password && <div id="password-error" className="text-error text-sm mt-1">{validationErrors.password}</div>}
           </div>
 
           {error && (
