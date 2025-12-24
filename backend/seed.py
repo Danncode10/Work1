@@ -9,6 +9,7 @@ Run this script after the database tables are created.
 import asyncio
 import sys
 from pathlib import Path
+from sqlalchemy import text
 
 # Add the backend directory to Python path
 backend_dir = Path(__file__).parent
@@ -103,7 +104,7 @@ async def seed_database():
     try:
         async for db in get_db():
             # Check if data already exists
-            result = await db.execute("SELECT COUNT(*) FROM ingredients")
+            result = await db.execute(text("SELECT COUNT(*) FROM ingredients"))
             count = result.scalar()
             if count > 0:
                 print(f"Database already has {count} ingredients. Skipping seeding.")
