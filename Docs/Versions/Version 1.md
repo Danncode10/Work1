@@ -306,10 +306,10 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [x] Connect to EC2 via SSH: Successfully connected to Ubuntu server at public IP.
 
 5.3.1 Sub Stage: **Install Software and Verify Setup**
-- [ ] Update the system: `sudo apt update && sudo apt upgrade -y`.
-- [ ] Install necessary software: Docker: `sudo apt install docker.io -y`, then add user to docker group: `sudo usermod -aG docker $USER`, restart terminal. Node.js: `curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && sudo apt-get install -y nodejs`. Nginx: `sudo apt install nginx -y`. Git: `sudo apt install git -y`. Python and pip: `sudo apt install python3 python3-pip -y`.
-- [ ] Verify installations: `node --version`, `npm --version`, `docker --version`, `nginx -v`, etc.
-- [ ] Test
+- [x] Update the system: `sudo apt update && sudo apt upgrade -y`.
+- [x] Install necessary software: Docker: `sudo apt install docker.io -y`, then add user to docker group: `sudo usermod -aG docker $USER`, restart terminal. Nginx: `sudo apt install nginx -y`. Git: `sudo apt install git -y`. Python and pip: `sudo apt install python3 python3-pip -y` (for development, though containerized in production).
+- [ ] Verify installations: `docker --version`, `nginx -v`, `git --version`, `python3 --version`, `pip3 --version`.
+- [ ] Test Docker container functionality
 
 5.4 Sub Stage: **Configure AWS RDS PostgreSQL Database**
 - [ ] Navigate to RDS service in AWS Management Console.
