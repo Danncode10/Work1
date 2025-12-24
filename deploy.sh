@@ -20,6 +20,6 @@ docker ps
 
 echo "Testing API..."
 sleep 3  # Wait for app to start
-curl -s http://localhost:8000/api/ingredients || echo "API test failed - check logs with: docker logs \$(docker ps -q --filter ancestor=nutrifriendly-backend)"
+curl http://localhost:8000/api/ingredients || echo "API test failed - check logs with: docker logs \$(docker ps -q --filter ancestor=nutrifriendly-backend)"
 
 echo "Deployment complete!"

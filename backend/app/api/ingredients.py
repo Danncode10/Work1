@@ -42,12 +42,13 @@ async def get_all_ingredients(
     - **skip**: Number of items to skip (default: 0)
     - **limit**: Maximum number of items to return (default: 50, max: 100)
     """
+    print("DEBUG: get_all_ingredients called")
     try:
         ingredients = await get_ingredients(db, skip=skip, limit=limit)
-        print(f"DEBUG: Found {len(ingredients)} ingredients")  # Debug log
+        print(f"DEBUG: Found {len(ingredients)} ingredients")
         return ingredients
     except Exception as e:
-        print(f"DEBUG: Error in get_ingredients: {e}")  # Debug log
+        print(f"DEBUG: Error in get_ingredients: {e}")
         import traceback
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
