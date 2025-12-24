@@ -333,24 +333,37 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [x] Create database schema and tables using SQLAlchemy (FastAPI startup created tables in RDS)
 - [x] Verify application functionality with live database (container runs and connects successfully)
 
-5.4.1.1 ✅ Sub Stage: **Add to_dict method to Ingredient model**
+5.4.1 ✅ Sub Stage: **Add to_dict method to Ingredient model**
 - [x] Implement to_dict method in Ingredient model for API response serialization
 
-5.4.1.2 ✅ Sub Stage: **SSL Configuration for Database Connections**
+5.4.2 ✅ Sub Stage: **SSL Configuration for Database Connections**
 - [x] Configure SSL context for PostgreSQL database connections in development environment
 - [x] Update database connection settings to handle SSL certificate verification
 - [x] Add SSL context configuration to database.py for secure connections
 - [x] Verify Docker container connects to database with SSL encryption
 
-5.4.1.3: ✅ Sub Stage: **Database Population with Seed Script** 
+5.4.3: ✅ Sub Stage: **Database Population with Seed Script** 
 - [x] Created and ran database seeding script with sample ingredients
   
-5.4.1.4 ✅ Sub Stage: **Session Summary - Docker, Database, and Deployment Setup** (See v_1_5_4_4.md)
+5.4.4 ✅ Sub Stage: **Session Summary - Docker, Database, and Deployment Setup** (See v_1_5_4_4.md)
 - [x] Started Docker container on EC2 with database connectivity
 - [x] Fixed SSL configuration for secure database connections
 - [x] Created and ran database seeding script with sample ingredients
 - [x] Updated all documentation to reflect completed work
 - [x] Verified application functionality with populated data
+
+5.4.5 ✅ Sub Stage: **Secure Database Access Tools**
+- [x] Created tunnel.sh script for secure SSH tunneling to database
+- [x] Added infrastructure configuration to .env file
+- [x] Configured script to read settings from environment variables
+- [x] Set up Elastic IP for stable EC2 connections
+
+5.4.6 ✅ Sub Stage: **Database GUI Access with DBeaver** (See v_1_5_4_6.md)
+- [x] Installed DBeaver Community Edition for visual database management
+- [x] Configured SSH tunnel for secure database access from local machine
+- [x] Set up DBeaver connection to PostgreSQL through tunnel
+- [x] Verified seeded data visibility in GUI interface
+- [x] Tested SSL-encrypted connection to AWS RDS
 
 5.5 Sub Stage: **Configure AWS Cognito for Authentication (Optional)**
 - [ ] Navigate to Cognito service.
