@@ -309,13 +309,14 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [x] Update the system: `sudo apt update && sudo apt upgrade -y`.
 - [x] Install necessary software: Docker: `sudo apt install docker.io -y`, then add user to docker group: `sudo usermod -aG docker $USER`, restart terminal. Nginx: `sudo apt install nginx -y`. Git: `sudo apt install git -y`. Python and pip: `sudo apt install python3 python3-pip -y` (for development, though containerized in production).
 - [x] Verify installations: `docker --version`, `nginx -v`, `git --version`, `python3 --version`, `pip3 --version`.
-- [ ] Test Docker container functionality (requires database setup - Stage 5.4)
+- [x] Test Docker container functionality (container builds and runs successfully with database connection)
 
-5.3.2: 🔶 Fix Docker Container Issues
+5.3.2: ✅ Fix Docker Container Issues
 - [x] Fixed Python import paths in FastAPI app for container compatibility
 - [x] Updated Dockerfile to use Python 3.12 (matching project requirements)
 - [x] Cleaned up .env file format for Docker environment variable parsing
-- [x] Verified container builds successfully (database connection pending Stage 5.4)
+- [x] Added SSL context configuration for database connections in development
+- [x] Verified container builds successfully and connects to database
 
 5.4.0 ✅ Sub Stage: **AWS RDS PostgreSQL Database Planning & Configuration**
 - [x] Complete RDS planning and configuration preparation
@@ -331,10 +332,16 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [x] Test database connectivity from EC2 Docker container (psql connection successful)
 - [x] Create database schema and tables using SQLAlchemy (FastAPI startup created tables in RDS)
 - [ ] Populate with initial ingredient data (pending)
-- [ ] Verify application functionality with live database (pending)
+- [x] Verify application functionality with live database (container runs and connects successfully)
 
 5.4.1.1 ✅ Sub Stage: **Add to_dict method to Ingredient model**
 - [x] Implement to_dict method in Ingredient model for API response serialization
+
+5.4.1.2 ✅ Sub Stage: **SSL Configuration for Database Connections**
+- [x] Configure SSL context for PostgreSQL database connections in development environment
+- [x] Update database connection settings to handle SSL certificate verification
+- [x] Add SSL context configuration to database.py for secure connections
+- [x] Verify Docker container connects to database with SSL encryption
 
 5.5 Sub Stage: **Configure AWS Cognito for Authentication (Optional)**
 - [ ] Navigate to Cognito service.
