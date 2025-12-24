@@ -21,6 +21,6 @@ class Settings(BaseSettings):
     react_app_api_base_url: str = "http://localhost:8000/api"
 
     class Config:
-        env_file = "../.env"
+        env_file = "../../.env"
 
 settings = Settings()

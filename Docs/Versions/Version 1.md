@@ -333,7 +333,7 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [ ] Populate with initial ingredient data (pending)
 - [ ] Verify application functionality with live database (pending)
 
-5.4.1.1 ✅ Sub Stage: **Add to_dict method to Ingredient model**
+5.4.1.1 ✅ Fix Sub Stage: **Add to_dict method to Ingredient model** 
 - [x] Implement to_dict method in Ingredient model for API response serialization
 
 5.5 Sub Stage: **Configure AWS Cognito for Authentication (Optional)**
