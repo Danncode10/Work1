@@ -292,12 +292,12 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [x] Understand AWS free tier limits to avoid unexpected charges.
 - [x] Test
 
-5.2 Sub Stage: **Create Storage with Amazon S3 (For Static Assets)**
-- [ ] Navigate to the S3 service in AWS Management Console.
-- [ ] Create a new bucket: Click "Create bucket". Enter a unique bucket name (e.g., "mynaturalhealthwebsite-assets"). Choose a region (AWS Region) that is geographically close to your users for better performance. Keep "ACLs disabled" for Block Public Access (we'll use CloudFront for public access). Enable versioning and bucket encryption for security.
-- [ ] Configure bucket permissions: Create a bucket policy to allow CloudFront access (we'll come back to this).
-- [ ] Upload static assets (CSS, JS, images) from your React build to the S3 bucket.
-- [ ] Test
+5.2 ✅ Sub Stage: **Create Storage with Amazon S3 (For Static Assets)**
+- [x] Navigate to the S3 service in AWS Management Console.
+- [x] Create a new bucket: Created "nutrifriendly-assets-dann" in Asia Pacific (Singapore) region. ACLs disabled, public access blocked, versioning enabled, SSE-S3 encryption enabled.
+- [x] Configure bucket permissions: Create a bucket policy to allow CloudFront access (we'll come back to this).
+- [x] Upload static assets (CSS, JS, images) from your React build to the S3 bucket.
+- [x] Test
 
 5.3 Sub Stage: **Set up AWS EC2 Instance**
 - [ ] Launch a new EC2 instance (t2.micro is eligible for free tier, 750 hours/month): Go to EC2 service in AWS Console. Click "Launch Instance". Choose an Amazon Machine Image (AMI) - select "Ubuntu Server 22.04 LTS (HVM)" for Linux-based deployment. Choose Instance Type: t2.micro (free tier eligible). Create a new key pair (or use existing) for SSH access - download the .pem file securely. Configure Network Settings: Create a new security group or use default. Configure Storage: 8 GB (default) is usually sufficient for small applications.
