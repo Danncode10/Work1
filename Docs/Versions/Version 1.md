@@ -308,8 +308,14 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 5.3.1 Sub Stage: **Install Software and Verify Setup**
 - [x] Update the system: `sudo apt update && sudo apt upgrade -y`.
 - [x] Install necessary software: Docker: `sudo apt install docker.io -y`, then add user to docker group: `sudo usermod -aG docker $USER`, restart terminal. Nginx: `sudo apt install nginx -y`. Git: `sudo apt install git -y`. Python and pip: `sudo apt install python3 python3-pip -y` (for development, though containerized in production).
-- [ ] Verify installations: `docker --version`, `nginx -v`, `git --version`, `python3 --version`, `pip3 --version`.
-- [ ] Test Docker container functionality
+- [x] Verify installations: `docker --version`, `nginx -v`, `git --version`, `python3 --version`, `pip3 --version`.
+- [ ] Test Docker container functionality (requires database setup - Stage 5.4)
+
+5.3.2: 🔶 Fix Docker Container Issues
+- [x] Fixed Python import paths in FastAPI app for container compatibility
+- [x] Updated Dockerfile to use Python 3.12 (matching project requirements)
+- [x] Cleaned up .env file format for Docker environment variable parsing
+- [x] Verified container builds successfully (database connection pending Stage 5.4)
 
 5.4 Sub Stage: **Configure AWS RDS PostgreSQL Database**
 - [ ] Navigate to RDS service in AWS Management Console.
