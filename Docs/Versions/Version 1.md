@@ -250,7 +250,7 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 
 4.6 ✅ Skipped, no need for visualization
 
-4.7 Sub Stage: **Basic Error Handling, Accessibility & Testing**
+4.7 ✅ Sub Stage: **Basic Error Handling, Accessibility & Testing**
 
   4.7.1 Sub Stage: **Implement comprehensive error handling**
   - [x] Implement user-friendly error messages for network failures
@@ -283,14 +283,14 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 ### **Stage 5: Deployment & Operations (AWS)**
 
 5.1 Sub Stage: **Set up AWS Account and Prerequisites**
-- [ ] If you don't have an AWS account, create one at https://aws.amazon.com/free/ (free tier available for 12 months).
-- [ ] Sign in to the AWS Management Console at https://console.aws.amazon.com/.
-- [ ] Set up Multi-Factor Authentication (MFA) for your root account for security.
-- [ ] Create an IAM user with administrative permissions (if not using root for development).
-- [ ] Install AWS CLI on your local machine: Download and install AWS CLI v2 from https://aws.amazon.com/cli/.
-- [ ] Configure AWS CLI by running `aws configure` in your terminal and entering your Access Key ID, Secret Access Key, default region (e.g., us-east-1), and output format (json).
-- [ ] Understand AWS free tier limits to avoid unexpected charges.
-- [ ] Test
+- [x] If you don't have an AWS account, create one at https://aws.amazon.com/free/ (free tier available for 12 months).
+- [x] Sign in to the AWS Management Console at https://console.aws.amazon.com/.
+- [x] Set up Multi-Factor Authentication (MFA) for your root account for security.
+- [x] Create an IAM user with administrative permissions (if not using root for development).
+- [x] Install AWS CLI on your local machine: Download and install AWS CLI v2 from https://aws.amazon.com/cli/.
+- [x] Configure AWS CLI by running `aws configure` in your terminal and entering your Access Key ID, Secret Access Key, default region (e.g., us-east-1), and output format (json).
+- [x] Understand AWS free tier limits to avoid unexpected charges.
+- [x] Test
 
 5.2 Sub Stage: **Create Storage with Amazon S3 (For Static Assets)**
 - [ ] Navigate to the S3 service in AWS Management Console.
