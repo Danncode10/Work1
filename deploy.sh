@@ -10,7 +10,7 @@ echo "Building Docker image..."
 docker build -t nutrifriendly-backend .
 
 echo "Stopping old containers..."
-docker stop $(docker ps -q --filter ancestor=nutrifriendly-backend) 2>/dev/null || echo "No old containers to stop"
+docker stop $(docker ps -q -f publish=8000) 2>/dev/null || echo "No containers on port 8000"
 
 echo "Starting new container..."
 docker run -d -p 8000:8000 --env-file .env nutrifriendly-backend
