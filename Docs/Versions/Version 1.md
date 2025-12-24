@@ -323,13 +323,13 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [x] Prepare all database creation parameters for PostgreSQL instance
 - [x] Document complete RDS setup process and troubleshooting steps
 
-5.4 🔶 Sub Stage: **Configure AWS RDS PostgreSQL Database**
+5.4.1 ✅ Sub Stage: **Configure AWS RDS PostgreSQL Database**
 - [x] Navigate to RDS service in AWS Management Console.
-- [ ] Create PostgreSQL database instance with planned configuration (pending AWS console action)
-- [ ] Configure security and access controls (VPC, security groups, encryption) (pending)
-- [ ] Obtain database endpoint and connection details (pending)
-- [ ] Test database connectivity from EC2 Docker container (pending)
-- [ ] Create database schema and tables using SQLAlchemy (pending)
+- [x] Create PostgreSQL database instance with planned configuration (completed via AWS console)
+- [x] Configure security and access controls (VPC, security groups, encryption) (added PostgreSQL inbound rule to security group)
+- [x] Obtain database endpoint and connection details (endpoint retrieved from RDS console)
+- [x] Test database connectivity from EC2 Docker container (psql connection successful)
+- [ ] Create database schema and tables using SQLAlchemy (pending deployment)
 - [ ] Populate with initial ingredient data (pending)
 - [ ] Verify application functionality with live database (pending)
 
