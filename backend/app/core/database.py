@@ -4,11 +4,11 @@ from typing import AsyncGenerator
 
 from .config import settings
 
-# Convert to asyncpg URL
-database_url = settings.database_url.replace("postgresql://", "postgresql+asyncpg://")
+# Convert to asyncpg URL with SSL mode for RDS
+database_url = settings.database_url.replace("postgresql://", "postgresql+asyncpg://") + "?sslmode=require"
 
-# Create async engine with SSL required for RDS
-engine = create_async_engine(database_url, echo=True, connect_args={"ssl": True})
+# Create async engine
+engine = create_async_engine(database_url, echo=True)
 
 # Create async session factory
 async_session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
