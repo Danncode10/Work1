@@ -305,7 +305,7 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [x] Create key pair (nutrifriendly-backend-key.pem) and launch instance.
 - [x] Connect to EC2 via SSH: Successfully connected to Ubuntu server at public IP.
 
-5.3.1 Sub Stage: **Install Software and Verify Setup**
+5.3.1 ✅ Sub Stage: **Install Software and Verify Setup**
 - [x] Update the system: `sudo apt update && sudo apt upgrade -y`.
 - [x] Install necessary software: Docker: `sudo apt install docker.io -y`, then add user to docker group: `sudo usermod -aG docker $USER`, restart terminal. Nginx: `sudo apt install nginx -y`. Git: `sudo apt install git -y`. Python and pip: `sudo apt install python3 python3-pip -y` (for development, though containerized in production).
 - [x] Verify installations: `docker --version`, `nginx -v`, `git --version`, `python3 --version`, `pip3 --version`.
@@ -317,17 +317,21 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [x] Cleaned up .env file format for Docker environment variable parsing
 - [x] Verified container builds successfully (database connection pending Stage 5.4)
 
-5.4 Sub Stage: **Configure AWS RDS PostgreSQL Database**
-- [ ] Navigate to RDS service in AWS Management Console.
-- [ ] Create a new database: Click "Create database". Choose "Standard create". Engine type: PostgreSQL. Version: Latest PostgreSQL version (e.g., 15.x). Template: Free tier (if eligible) or Dev/Test for cost efficiency. DB instance identifier: "mynaturalhealthdb" (unique name). Master username: "postgres" (or custom). Set master password (note it down securely). DB instance class: db.t3.micro (free tier eligible). Storage: General Purpose SSD, 20 GB (sufficient for small database). VPC: Choose the same VPC as your EC2 instance.
-- [ ] Configure additional settings: Database authentication: Password authentication. Backup: Disable automated backups to save costs for development. Monitoring: Enable Enhanced monitoring for basic insights.
-- [ ] Configure security group: Create a new security group for RDS. Add inbound rule: PostgreSQL (port 5432), source type Custom, source as your EC2 security group ID.
-- [ ] Launch the database and note the endpoint (e.g., mynaturalhealthdb.xxxxxx.us-east-1.rds.amazonaws.com).
-- [ ] Connect to the database from EC2: Install PostgreSQL client on EC2: `sudo apt install postgresql-client -y`. Connect using psql: `psql --host=<rds-endpoint> --port=5432 --username=postgres --password --dbname=postgres`.
-- [ ] Create database tables using your schema from Stage 2.
-- [ ] Populate with initial ingredient data using INSERT statements or a script.
-- [ ] Note: Ingredient data is seeded manually via scripts or database imports. An admin dashboard for ongoing data management is deferred to later versions.
-- [ ] Test
+5.4.0 ✅ Sub Stage: **AWS RDS PostgreSQL Database Planning & Configuration**
+- [x] Complete RDS planning and configuration preparation
+- [x] Identify free tier backup retention limitations and adjust strategy
+- [x] Prepare all database creation parameters for PostgreSQL instance
+- [x] Document complete RDS setup process and troubleshooting steps
+
+5.4 🔶 Sub Stage: **Configure AWS RDS PostgreSQL Database**
+- [x] Navigate to RDS service in AWS Management Console.
+- [ ] Create PostgreSQL database instance with planned configuration (pending AWS console action)
+- [ ] Configure security and access controls (VPC, security groups, encryption) (pending)
+- [ ] Obtain database endpoint and connection details (pending)
+- [ ] Test database connectivity from EC2 Docker container (pending)
+- [ ] Create database schema and tables using SQLAlchemy (pending)
+- [ ] Populate with initial ingredient data (pending)
+- [ ] Verify application functionality with live database (pending)
 
 5.5 Sub Stage: **Configure AWS Cognito for Authentication (Optional)**
 - [ ] Navigate to Cognito service.
