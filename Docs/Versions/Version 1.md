@@ -329,9 +329,12 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [x] Configure security and access controls (VPC, security groups, encryption) (added PostgreSQL inbound rule to security group)
 - [x] Obtain database endpoint and connection details (endpoint retrieved from RDS console)
 - [x] Test database connectivity from EC2 Docker container (psql connection successful)
-- [ ] Create database schema and tables using SQLAlchemy (pending deployment)
+- [x] Create database schema and tables using SQLAlchemy (FastAPI startup created tables in RDS)
 - [ ] Populate with initial ingredient data (pending)
 - [ ] Verify application functionality with live database (pending)
+
+5.4.1.1 ✅ Sub Stage: **Add to_dict method to Ingredient model**
+- [x] Implement to_dict method in Ingredient model for API response serialization
 
 5.5 Sub Stage: **Configure AWS Cognito for Authentication (Optional)**
 - [ ] Navigate to Cognito service.

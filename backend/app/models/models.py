@@ -21,3 +21,15 @@ class Ingredient(Base):
     dosage = Column(String)
     calories = Column(Float)
     references = Column(ARRAY(String))
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "benefits": self.benefits,
+            "risks": self.risks,
+            "nutrition_facts": self.nutrition_facts,
+            "dosage": self.dosage,
+            "calories": self.calories,
+            "references": self.references
+        }
