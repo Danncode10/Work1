@@ -21,8 +21,13 @@ app.include_router(ingredients_router, prefix="/api")
 
 @app.on_event("startup")
 async def startup():
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
+    try:
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+        print("Database tables created successfully")
+    except Exception as e:
+        print(f"Failed to create database tables: {e}")
+        raise
 
 @app.get("/")
 def read_root():
