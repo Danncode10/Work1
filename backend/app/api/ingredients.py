@@ -44,6 +44,7 @@ async def get_all_ingredients(
     """
     print("DEBUG: get_all_ingredients called")
     try:
+        print("DEBUG: About to call get_ingredients")
         ingredients = await get_ingredients(db, skip=skip, limit=limit)
         print(f"DEBUG: Found {len(ingredients)} ingredients")
         return ingredients

@@ -20,5 +20,8 @@ engine = create_async_engine(database_url, echo=True, connect_args={"ssl": ssl_c
 async_session = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
 async def get_db() -> AsyncGenerator[AsyncSession, None]:
+    print("DEBUG: get_db called")
     async with async_session() as session:
+        print("DEBUG: session created")
         yield session
+    print("DEBUG: session closed")
