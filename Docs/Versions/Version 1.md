@@ -299,11 +299,13 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [x] Upload static assets (CSS, JS, images) from your React build to the S3 bucket.
 - [x] Test
 
-5.3 Sub Stage: **Set up AWS EC2 Instance**
-- [ ] Launch a new EC2 instance (t2.micro is eligible for free tier, 750 hours/month): Go to EC2 service in AWS Console. Click "Launch Instance". Choose an Amazon Machine Image (AMI) - select "Ubuntu Server 22.04 LTS (HVM)" for Linux-based deployment. Choose Instance Type: t2.micro (free tier eligible). Create a new key pair (or use existing) for SSH access - download the .pem file securely. Configure Network Settings: Create a new security group or use default. Configure Storage: 8 GB (default) is usually sufficient for small applications.
-- [ ] Configure Security Group (firewall rules): Allow SSH (port 22) from your IP address only (or 0.0.0.0/0 for simplicity, but less secure). Allow HTTP (port 80) and HTTPS (port 443) from anywhere (0.0.0.0/0). Optionally allow port 3000 or 8000 for testing (restrict to your IP).
-- [ ] Launch the instance and note the Public IP address (you'll need this for SSH).
-- [ ] Connect to EC2 via SSH: Use your terminal: `ssh -i "your-key-pair.pem" ubuntu@<your-instance-public-ip>`. Or use EC2 Instance Connect in AWS Console for web-based access.
+5.3.0 ✅ Sub Stage: **Launch and Connect to EC2 Instance**
+- [x] Launch a new EC2 instance (t3.micro free tier eligible): Ubuntu Server 22.04 LTS in ap-southeast-1, nutrifriendly-backend name, 8GB gp2 storage.
+- [x] Configure Security Group (nutrifriendly-backend-sg): SSH (22), HTTP (80), HTTPS (443), Custom TCP (8000) all from 0.0.0.0/0.
+- [x] Create key pair (nutrifriendly-backend-key.pem) and launch instance.
+- [x] Connect to EC2 via SSH: Successfully connected to Ubuntu server at public IP.
+
+5.3.1 Sub Stage: **Install Software and Verify Setup**
 - [ ] Update the system: `sudo apt update && sudo apt upgrade -y`.
 - [ ] Install necessary software: Docker: `sudo apt install docker.io -y`, then add user to docker group: `sudo usermod -aG docker $USER`, restart terminal. Node.js: `curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && sudo apt-get install -y nodejs`. Nginx: `sudo apt install nginx -y`. Git: `sudo apt install git -y`. Python and pip: `sudo apt install python3 python3-pip -y`.
 - [ ] Verify installations: `node --version`, `npm --version`, `docker --version`, `nginx -v`, etc.
