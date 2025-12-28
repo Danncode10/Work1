@@ -53,6 +53,7 @@ To start the React frontend development server:
 3. Start the development server:
    ```bash
    npm run dev
+   npm run dev -- --host 0.0.0.0 # run on AWS
    ```
 
 The frontend will be available at `http://localhost:5173`.

@@ -372,10 +372,11 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [ ] Configure domain: Set up a domain for hosted UI if needed.
 - [ ] Test
 
-5.6 Sub Stage: Deployment & Operations (AWS)** ✅ **Completed**
+5.6.1 Sub Stage: Deployment & Operations (AWS)** ✅ **Completed**
    `real deployment details are in the changelog files (v_1_5_3_0.md through v_1_5_4_6.md)`
 
-- [ ] Make clean documentation for how to run the application, database using dbeaver in device, setup instructions, and cloud infrastructure details. See changelog files for detailed deployment evolution.
+- [x] Make clean documentation for how to run the application, database using dbeaver in device, setup instructions, and cloud infrastructure details. See changelog files for detailed deployment evolution.
+- [x] Added new security group to port 5173
 
 5.7 Sub Stage: **Set up Domain & DNS with Route 53**
 - [ ] Register a domain: Go to Route 53 in AWS Console. Click "Register domain". Search for available domain names (e.g., naturalhealthsite.com). Add to cart and complete purchase (annual fees apply).
