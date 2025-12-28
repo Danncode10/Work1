@@ -13,62 +13,92 @@ This repository serves dual purposes:
 The ultimate goal is to create a scalable, accessible platform that empowers users to make informed decisions about natural health and nutrition, while establishing a replicable framework for future solo software development projects.
 
 ## Current Status
-**Version 0.0.0** - Planning and Documentation Phase
+**Version 1.0.0** - Complete Implementation with AWS Deployment
 
-The project is currently in documentation development. Once implementation begins following the version guides, the version will increment based on progress (e.g., completing "Stage 2, Sub-Stage 1" of Version 1.0.0 would advance to Version 1.2.1).
+The project has been fully implemented and deployed to AWS. All development stages have been completed including:
+- FastAPI backend deployed on AWS EC2 with Docker
+- React frontend for local development
+- PostgreSQL database on AWS RDS with SSL
+- Secure database access via SSH tunneling
+- Production-ready deployment infrastructure
 
-*Last documented update: Version 1.0.0 development stages fully detailed with UI setup and AWS deployment guides.*
+*Last update: Stage 5 deployment infrastructure fully operational on AWS*
 
-## Development Setup
+## Setup & Deployment
 
-### Start the env 
+### Environment Setup
 
-1. Navigate to the env directory:
-   ```
-   cd env
-   ```
-
-2. Run the development script:
-   ```
-   source ./bin/activate 
-   ```
-
-### Starting the Backend (FastAPI)
-
-To start the FastAPI backend server and PostgreSQL database for development:
-
-1. Navigate to the backend directory:
-   ```
-   cd backend
+1. **Clone the repository and set up environment variables:**
+   ```bash
+   git clone <repository-url>
+   cd nutrifriendly
+   cp .env.example .env
+   # Edit .env with your configuration
    ```
 
-2. Run the development script:
-   ```
-   ./dev.sh
-   ```
-
-The script will automatically start PostgreSQL (if not already running) and then start the FastAPI server on `http://localhost:8000` with hot reloading enabled. The script checks PostgreSQL status to avoid unnecessary delays when the database is already running.
-
-### Starting the Frontend (React)
+### Local Development - Frontend (React)
 
 To start the React frontend development server:
 
 1. Navigate to the ui directory:
-   ```
+   ```bash
    cd ui
    ```
 
 2. Install dependencies (if not already done):
-   ```
+   ```bash
    npm install
    ```
 
 3. Start the development server:
-   ```
+   ```bash
    npm run dev
    ```
 
 The frontend will be available at `http://localhost:5173`.
+
+### Production Deployment - Backend (AWS EC2)
+
+The backend is deployed using Docker on AWS EC2 instance. Run these commands in your AWS instance:
+
+1. **Check running containers:**
+   ```bash
+   docker ps
+   ```
+
+2. **Build the Docker image:**
+   ```bash
+   docker build -t nutrifriendly .
+   ```
+
+3. **Run the container:**
+   ```bash
+   docker run -d -p 8000:8000 --env-file .env nutrifriendly
+   ```
+
+4. **Stop a running container:**
+   ```bash
+   docker stop <container_id>
+   ```
+
+The backend API will be available at `http://your-ec2-ip:8000`.
+
+### Database Access (Local Development)
+
+For local database management using DBeaver (macOS only):
+
+1. **Create SSH tunnel to AWS RDS:**
+   ```bash
+   ./tunnel.sh
+   ```
+
+2. **Connect DBeaver to:**
+   - Host: `localhost`
+   - Port: `5433`
+   - Database: Your RDS database name
+   - Username/Password: From your .env file
+
+**Note:** The `.env` file should be copied to your AWS EC2 instance for production deployment.
 
 ## Documentation Guide
 This repository provides comprehensive documentation structured for systematic development:
