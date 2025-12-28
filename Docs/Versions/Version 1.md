@@ -372,18 +372,12 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [ ] Configure domain: Set up a domain for hosted UI if needed.
 - [ ] Test
 
-5.6 Sub Stage: **Prepare Application for Deployment**
-- [ ] On your local machine, prepare the backend: Create Dockerfile for FastAPI app in backend directory. Example Dockerfile content: ```FROM python:3.11-slim WORKDIR /app COPY requirements.txt . RUN pip install -r requirements.txt COPY . . EXPOSE 8000 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]``` Update environment variables in .env for production: DATABASE_URL=postgresql://username:password@rds-endpoint:5432/database. AWS_REGION=us-east-1. AWS_COGNITO_USER_POOL_ID=your_pool_id. AWS_COGNITO_CLIENT_ID=your_client_id.
-- [ ] Prepare the frontend: Build the React app: `npm run build` (creates dist/ folder). Update .env with production API base URL (your domain/api later). Optionally, create a Dockerfile for React if using container deployment.
-- [ ] Test
+5.6 Sub Stage: Deployment & Operations (AWS)** ✅ **Completed**
+   `real deployment details are in the changelog files (v_1_5_3_0.md through v_1_5_4_6.md)`
 
-5.7 Sub Stage: **Deploy Applications to EC2**
-- [ ] Transfer files to EC2: Use SCP or git clone your repositories on EC2. Example for SCP: `scp -i your-key.pem -r backend/ ubuntu@ip:/home/ubuntu/`.
-- [ ] Build and run containers on EC2: Build backend image: `cd backend && docker build -t naturalhealth-backend .`. Run backend container: `docker run -d -p 8000:8000 -e DATABASE_URL=... naturalhealth-backend`. For frontend, serve the built files via Nginx (copy dist/ to /var/www/html/naturalhealth).
-- [ ] Configure Nginx as reverse proxy: Create config: `sudo nano /etc/nginx/sites-available/naturalhealth` with server block for your-domain.com. Enable site: `sudo ln -s /etc/nginx/sites-available/naturalhealth /etc/nginx/sites-enabled/`. Disable default: `sudo unlink /etc/nginx/sites-enabled/default`. Test config: `sudo nginx -t`. Reload: `sudo systemctl reload nginx`.
-- [ ] Test
+- [ ] Make clean documentation for how to run the application, database using dbeaver in device, setup instructions, and cloud infrastructure details. See changelog files for detailed deployment evolution.
 
-5.8 Sub Stage: **Set up Domain & DNS with Route 53**
+5.7 Sub Stage: **Set up Domain & DNS with Route 53**
 - [ ] Register a domain: Go to Route 53 in AWS Console. Click "Register domain". Search for available domain names (e.g., naturalhealthsite.com). Add to cart and complete purchase (annual fees apply).
 - [ ] Create a hosted zone: In Route 53, go to "Hosted zones". Click "Create hosted zone". Enter your domain name. Note the 4 name servers listed (NS records).
 - [ ] If domain was registered elsewhere, update domain's name servers to AWS NS records.
@@ -391,14 +385,14 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [ ] For CloudFront (if using S3 for assets): Create distribution in CloudFront. Origin: S3 bucket. Alternate domain names: your domain or cdn subdomain. Add CNAME record in Route 53 pointing to CloudFront URL.
 - [ ] Test
 
-5.9 Sub Stage: **Configure SSL with AWS Certificate Manager**
+5.8 Sub Stage: **Configure SSL with AWS Certificate Manager**
 - [ ] Go to AWS Certificate Manager (ACM). Request a certificate: Click "Request a certificate". Public certificate, Next. Add domain names: your-domain.com and www.your-domain.com. Choose DNS validation (recommended).
 - [ ] Add validation CNAME records to Route 53 hosted zone (records provided by ACM).
 - [ ] Import certificate to EC2 for Nginx: Export certificate from ACM (but ACM certificates can't be exported). Alternative: Use Let's Encrypt on EC2: `sudo apt install certbot python3-certbot-nginx -y`. Run: `sudo certbot --nginx -d your-domain.com -d www.your-domain.com`. Update Nginx config to use HTTPS (certbot will handle it).
 - [ ] Redirect HTTP to HTTPS in Nginx config: Add server block for listen 80, return 301 https://$server_name$request_uri.
 - [ ] Test
 
-5.10 Sub Stage: **Set up Monitoring and Logging**
+5.9 Sub Stage: **Set up Monitoring and Logging**
 - [ ] Enable CloudWatch for EC2: Install CloudWatch agent: `wget https://s3.amazonaws.com/amazoncloudwatch-agent/amazon_linux/amd64/latest/amazon-cloudwatch-agent.rpm && sudo rpm -Uvh amazon-cloudwatch-agent.rpm`. Configure: `/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard`.
 - [ ] Configure CloudWatch logs for application: Create log groups for frontend (Nginx) and backend. Use AWS CLI or SDK to send logs.
 - [ ] Set up CloudWatch alarms: Go to CloudWatch > Alarms. Create alarm for EC2 CPU > 80%. Create alarm for RDS free storage < 5GB. Configure SNS topic for email notifications.
