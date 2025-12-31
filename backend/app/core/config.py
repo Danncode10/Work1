@@ -21,9 +21,9 @@ class Settings(BaseSettings):
     # Frontend
     react_app_api_base_url: str = "http://localhost:8000/api"
 
-    model_config = ConfigDict(extra='ignore')
-
-    class Config:
-        env_file = "../.env"
+    model_config = ConfigDict(
+        extra='ignore',
+        env_file='../.env'
+    )
 
 settings = Settings()
