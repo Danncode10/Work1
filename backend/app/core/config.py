@@ -1,3 +1,4 @@
+from pydantic import ConfigDict
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
@@ -19,6 +20,8 @@ class Settings(BaseSettings):
 
     # Frontend
     react_app_api_base_url: str = "http://localhost:8000/api"
+
+    model_config = ConfigDict(extra='ignore')
 
     class Config:
         env_file = "../.env"

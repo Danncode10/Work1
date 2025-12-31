@@ -378,7 +378,7 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [x] Make clean documentation for how to run the application, database using dbeaver in device, setup instructions, and cloud infrastructure details. See changelog files for detailed deployment evolution.
 - [x] Added new security group to port 5173
 
-5.7 Sub Stage: **Set up Domain & DNS with Route 53**
+5.7 Sub Stage: **Set up Domain & DNS with Route 53** ❌ skipped. no domain name for now
 - [ ] Register a domain: Go to Route 53 in AWS Console. Click "Register domain". Search for available domain names (e.g., naturalhealthsite.com). Add to cart and complete purchase (annual fees apply).
 - [ ] Create a hosted zone: In Route 53, go to "Hosted zones". Click "Create hosted zone". Enter your domain name. Note the 4 name servers listed (NS records).
 - [ ] If domain was registered elsewhere, update domain's name servers to AWS NS records.
@@ -386,7 +386,7 @@ User accounts require manual confirmation by AWS administrator in Cognito consol
 - [ ] For CloudFront (if using S3 for assets): Create distribution in CloudFront. Origin: S3 bucket. Alternate domain names: your domain or cdn subdomain. Add CNAME record in Route 53 pointing to CloudFront URL.
 - [ ] Test
 
-5.8 Sub Stage: **Configure SSL with AWS Certificate Manager**
+5.8 Sub Stage: **Configure SSL with AWS Certificate Manager** ❌ skipped. no domain name
 - [ ] Go to AWS Certificate Manager (ACM). Request a certificate: Click "Request a certificate". Public certificate, Next. Add domain names: your-domain.com and www.your-domain.com. Choose DNS validation (recommended).
 - [ ] Add validation CNAME records to Route 53 hosted zone (records provided by ACM).
 - [ ] Import certificate to EC2 for Nginx: Export certificate from ACM (but ACM certificates can't be exported). Alternative: Use Let's Encrypt on EC2: `sudo apt install certbot python3-certbot-nginx -y`. Run: `sudo certbot --nginx -d your-domain.com -d www.your-domain.com`. Update Nginx config to use HTTPS (certbot will handle it).
