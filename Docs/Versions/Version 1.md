@@ -34,7 +34,7 @@ Version 1.0.0 does NOT include:
 - Create IAM roles for EC2 instance with permissions to access RDS and CloudWatch.
 - Create IAM role for application with minimal necessary permissions.
 
-1.3 🔶 Sub Stage: **Prepare Environment Variables** (Partially Complete - Placeholders Used)
+1.3 ✅ Sub Stage: **Prepare Environment Variables** (Partially Complete - Placeholders Used)
  - Create `.env.example` in the project root based on `Phase 2: SRS` requirements (DATABASE_URL, AWS_REGION, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_COGNITO_USER_POOL_ID, AWS_COGNITO_CLIENT_ID, NODE_ENV, PORT, REACT_APP_API_BASE_URL).
 - Populate a local `.env` file with development-specific values (only AWS credentials updated; database and Cognito IDs use placeholders pending later stages).
 

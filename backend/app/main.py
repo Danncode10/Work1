@@ -3,8 +3,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from .core.database import engine
 from .models.models import Base
 from .api import auth_router, ingredients_router
+from .core.config import settings
 
-app = FastAPI(title="Natural Health API", version="1.0.0")
+# Conditionally disable docs in production
+docs_url = "/docs" if settings.node_env == "development" else None
+redoc_url = "/redoc" if settings.node_env == "development" else None
+
+app = FastAPI(title="Natural Health API", version="1.0.0", docs_url=docs_url, redoc_url=redoc_url)
 
 # Add CORS middleware
 app.add_middleware(

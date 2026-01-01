@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from typing import List
 from app.core.database import get_db
 from app.crud import get_ingredients, get_ingredient_by_id, search_ingredients as search_ingredients_crud
+from app.auth.auth import get_current_user
 
 class SearchRequest(BaseModel):
     query: str
@@ -34,6 +35,7 @@ router = APIRouter(prefix="/ingredients", tags=["ingredients"])
 async def get_all_ingredients(
     skip: int = Query(0, ge=0, description="Number of items to skip"),
     limit: int = Query(50, ge=1, le=100, description="Maximum number of items to return"),
+    current_user: dict = Depends(get_current_user),
     db: AsyncSession = Depends(get_db)
 ):
     """
@@ -53,7 +55,7 @@ async def get_all_ingredients(
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/{ingredient_id}", response_model=IngredientResponse)
-async def get_ingredient(ingredient_id: int, db: AsyncSession = Depends(get_db)):
+async def get_ingredient(ingredient_id: int, current_user: dict = Depends(get_current_user), db: AsyncSession = Depends(get_db)):
     """
     Retrieve a specific ingredient by ID.
 
@@ -65,7 +67,7 @@ async def get_ingredient(ingredient_id: int, db: AsyncSession = Depends(get_db))
     return ingredient
 
 @router.post("/search", response_model=List[IngredientResponse])
-async def search_ingredients(request: SearchRequest, db: AsyncSession = Depends(get_db)):
+async def search_ingredients(request: SearchRequest, current_user: dict = Depends(get_current_user), db: AsyncSession = Depends(get_db)):
     """
     Search ingredients using full-text search on names and benefits.
 
